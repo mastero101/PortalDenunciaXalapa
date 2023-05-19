@@ -1,0 +1,7 @@
+{
+  "name": "PortalDenunciaXalapa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
