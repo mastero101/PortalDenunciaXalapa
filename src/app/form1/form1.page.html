@@ -77,9 +77,46 @@
         <ion-label>No</ion-label>
       </ion-segment-button>
     </ion-segment>
-    <ion-content style="height: 15em;">
-      <ion-button style="margin-left: 7em; margin-top: 2em; margin-bottom: 2em;">Agregar Victima</ion-button>
-      <ion-button style="margin-left: 9em;">Guardar</ion-button>
+    <ion-card>
+    <ion-content style="height: 25em;">
+      <ion-button style="margin-left: 6.5em; margin-top: 2em; margin-bottom: 2em;" (click)="toggleCard()">Agregar Victima</ion-button>
+      <ion-card *ngIf="showCard">
+        <ion-input type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
+        <ion-input type="text" placeholder="Apellido Paterno"></ion-input>
+        <ion-input type="text" placeholder="Materno"></ion-input>
+        <ion-label style="margin-left: 2em;">Fecha de nacimiento</ion-label>
+        <ion-input type="date" placeholder="Fecha de nacimiento"></ion-input>
+        <ion-input type="text" placeholder="Genero"></ion-input>
+        <ion-input type="text" placeholder="Escolaridad"></ion-input>
+        <ion-input type="email" placeholder="Correo Electronico"></ion-input>
+        <ion-card>
+          <p style="margin-left: 2em;">Datos del domicilio</p>
+        </ion-card>
+        <ion-select type="text" placeholder="Estado">
+          <ion-select-option value="opcion1">Veracruz</ion-select-option>
+          <ion-select-option value="opcion2">Tamaulipas</ion-select-option>
+          <ion-select-option value="opcion3">Villahermosa</ion-select-option>
+        </ion-select>
+        <ion-select type="text" placeholder="Municipio">
+          <ion-select-option value="opcion1">Xalapa</ion-select-option>
+          <ion-select-option value="opcion2">Acatlán</ion-select-option>
+          <ion-select-option value="opcion3">Acultzingo</ion-select-option>
+        </ion-select>
+        <ion-select type="text" placeholder="Colonia">
+          <ion-select-option value="opcion1">Revolucion</ion-select-option>
+          <ion-select-option value="opcion2">Acatlán</ion-select-option>
+          <ion-select-option value="opcion3">Acultzingo</ion-select-option>
+        </ion-select>
+        <ion-input type="number" placeholder="C.P"></ion-input>
+        <ion-input type="text" placeholder="Calle"></ion-input>
+        <ion-input type="number" placeholder="No exterior"></ion-input>
+        <ion-input type="number" placeholder="No Interior"></ion-input>
+        <ion-input type="number" placeholder="Tel Celular"></ion-input>
+        <ion-input type="number" placeholder="Tel Fijo"></ion-input>
+        <ion-button style="margin-left: 8em; margin-bottom: 1em;">Agregar</ion-button>
+      </ion-card>
+      <ion-button style="margin-left: 9em; margin-bottom: 5em;">Guardar</ion-button>
     </ion-content>
+    </ion-card>
   </ion-content>
 </ion-content>

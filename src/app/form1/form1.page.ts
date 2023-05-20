@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class Form1Page implements OnInit {
   selectedTab: string = 'tab1';
   selectedOption: string;
+  showCard: boolean = false;
 
   constructor(private router: Router) {
     this.selectedOption = '';
@@ -25,6 +26,10 @@ export class Form1Page implements OnInit {
   navigateTo(tab: string) {
     this.selectedTab = 'tab1';
     this.router.navigateByUrl('' + tab); // Reemplaza '/form1/' por la ruta correspondiente a tu vista dentro de form1
+  }
+
+  toggleCard() {
+    this.showCard = !this.showCard;
   }
 
 }
