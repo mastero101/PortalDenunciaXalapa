@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Form 1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="selectedTab" (ionChange)="onTabChange($event)">
+      <ion-segment-button value="tab1" (click)="navigateTo('form1')">
+        <ion-label>Paso 1</ion-label>
+      </ion-segment-button>
+  
+      <ion-segment-button value="tab2" (click)="navigateTo('form2')">
+        <ion-label>Paso 2</ion-label>
+      </ion-segment-button>
+  
+      <ion-segment-button value="tab3" (click)="navigateTo('form3')">
+        <ion-label>Paso 3</ion-label>
+      </ion-segment-button>
+  
+      <ion-segment-button value="tab4" (click)="navigateTo('form4')">
+        <ion-label>Paso 4</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <ion-content style="margin-top: 2em;">
+    <!-- Contenido específico del formulario 1 -->
+    <p style="margin-left: 1em; font-size: 15px; ">Responda cuidadosamente todas las preguntas</p>
+    <ion-card>
+      <p style="margin-left: 2em;">Datos del denunciante</p>
+    </ion-card>
+    <ion-input type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
+    <ion-input type="text" placeholder="Apellido Paterno"></ion-input>
+    <ion-input type="text" placeholder="Materno"></ion-input>
+    <ion-label style="margin-left: 2em;">Fecha de nacimiento</ion-label>
+    <ion-input type="date" placeholder="Fecha de nacimiento"></ion-input>
+    <ion-input type="text" placeholder="Genero"></ion-input>
+    <ion-input type="text" placeholder="Escolaridad"></ion-input>
+    <ion-input type="email" placeholder="Correo Electronico"></ion-input>
+    <ion-card>
+      <p style="margin-left: 2em;">Datos del domicilio</p>
+    </ion-card>
+    <ion-select type="text" placeholder="Estado">
+      <ion-select-option value="opcion1">Veracruz</ion-select-option>
+      <ion-select-option value="opcion2">Tamaulipas</ion-select-option>
+      <ion-select-option value="opcion3">Villahermosa</ion-select-option>
+    </ion-select>
+    <ion-select type="text" placeholder="Municipio">
+      <ion-select-option value="opcion1">Xalapa</ion-select-option>
+      <ion-select-option value="opcion2">Acatlán</ion-select-option>
+      <ion-select-option value="opcion3">Acultzingo</ion-select-option>
+    </ion-select>
+    <ion-select type="text" placeholder="Colonia">
+      <ion-select-option value="opcion1">Revolucion</ion-select-option>
+      <ion-select-option value="opcion2">Acatlán</ion-select-option>
+      <ion-select-option value="opcion3">Acultzingo</ion-select-option>
+    </ion-select>
+    <ion-input type="number" placeholder="C.P"></ion-input>
+    <ion-input type="text" placeholder="Calle"></ion-input>
+    <ion-input type="number" placeholder="No exterior"></ion-input>
+    <ion-input type="number" placeholder="No Interior"></ion-input>
+    <ion-input type="number" placeholder="Tel Celular"></ion-input>
+    <ion-input type="number" placeholder="Tel Fijo"></ion-input>
+    <ion-card>
+      <p style="margin-left: 1em; font-size: 15px; ">El denunciante tambien se considera victima y ofendido (a)</p>
+    </ion-card>
+    <ion-segment [(ngModel)]="selectedOption">
+      <ion-segment-button value="yes">
+        <ion-label>Sí</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="no">
+        <ion-label>No</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-content style="height: 15em;">
+      <ion-button style="margin-left: 7em; margin-top: 2em; margin-bottom: 2em;">Agregar Victima</ion-button>
+      <ion-button style="margin-left: 9em;">Guardar</ion-button>
+    </ion-content>
+  </ion-content>
+</ion-content>

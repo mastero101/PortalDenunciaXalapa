@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Form 4</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="selectedTab" (ionChange)="onTabChange($event)">
+      <ion-segment-button value="tab1" (click)="navigateTo('form1')">
+        <ion-label>Paso 1</ion-label>
+      </ion-segment-button>
+  
+      <ion-segment-button value="tab2" (click)="navigateTo('form2')">
+        <ion-label>Paso 2</ion-label>
+      </ion-segment-button>
+  
+      <ion-segment-button value="tab3" (click)="navigateTo('form3')">
+        <ion-label>Paso 3</ion-label>
+      </ion-segment-button>
+  
+      <ion-segment-button value="tab4" (click)="navigateTo('form4')">
+        <ion-label>Paso 4</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
