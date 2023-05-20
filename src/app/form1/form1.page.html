@@ -78,12 +78,12 @@
       </ion-segment-button>
     </ion-segment>
     <ion-card>
-    <ion-content style="height: 45em;">
+    <ion-content class="agregar" style="height: 15em;">
       <ion-button style="margin-left: 6.5em; margin-top: 2em; margin-bottom: 2em;" (click)="toggleCard()">Agregar Victima</ion-button>
       <ion-card *ngIf="showCard">
-        <ion-input type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
-        <ion-input type="text" placeholder="Apellido Paterno"></ion-input>
-        <ion-input type="text" placeholder="Materno"></ion-input>
+        <ion-input [(ngModel)]="nombre" type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
+        <ion-input [(ngModel)]="apellidoPaterno" type="text" placeholder="Apellido Paterno"></ion-input>
+        <ion-input [(ngModel)]="apellidoMaterno" type="text" placeholder="Materno"></ion-input>
         <ion-label style="margin-left: 2em;">Fecha de nacimiento</ion-label>
         <ion-input type="date" placeholder="Fecha de nacimiento"></ion-input>
         <ion-input type="text" placeholder="Genero"></ion-input>
@@ -113,8 +113,18 @@
         <ion-input type="number" placeholder="No Interior"></ion-input>
         <ion-input type="number" placeholder="Tel Celular"></ion-input>
         <ion-input type="number" placeholder="Tel Fijo"></ion-input>
-        <ion-button style="margin-left: 8em; margin-bottom: 1em;">Agregar</ion-button>
+        <ion-button style="margin-left: 8em; margin-bottom: 1em;" (click)="agregar()">Agregar</ion-button>
       </ion-card>
+        <table *ngIf="nombres.length > 0" style="margin-top: 1em; margin-left: 2em; margin-bottom: 2em;">
+          <tr>
+            <th>Nombre</th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let nombre of nombres">
+            <td>{{ nombres }}</td>
+            <td><ion-icon style="margin-left: 0.5em;" name="trash-outline" (click)="eliminar(nombre)"></ion-icon></td>
+          </tr>
+        </table>
       <ion-button style="margin-left: 9em; margin-bottom: 5em;">Guardar</ion-button>
     </ion-content>
     </ion-card>
