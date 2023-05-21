@@ -32,11 +32,13 @@
     <!-- Contenido específico del formulario 1 -->
     <p style="margin-left: 1em; font-size: 15px; ">Responda cuidadosamente todas las preguntas</p>
     <p style="margin-left: 8.5em; font-size: 15px;">Folio  1232123</p>
-    <ion-content style="height:50em;">
+    <ion-content style="height:55em;">
     <ion-card>
       <p style="margin-left: 0.5em; font-size: 14px;">¿Cuando Sucedio el hecho con aparencia de delito?</p>
     </ion-card>
+    <p style="margin-left: 2em;">Fecha</p>
     <ion-input type="date"></ion-input>
+    <p style="margin-left: 2em;">Hora</p>
     <ion-input type="time"></ion-input>
     <p></p>
     <ion-card>
@@ -61,6 +63,6 @@
     <ion-input type="text" placeholder="Calle"></ion-input>
     <ion-input type="number" placeholder="No Exterior"></ion-input>
     <ion-input type="number" placeholder="No Interior"></ion-input>
-      <ion-button style="margin-left: 9em;">Guardar</ion-button>
+      <ion-button style="margin-left: 9em;" (click)="guardar()">Guardar</ion-button>
     </ion-content>
   </ion-content>

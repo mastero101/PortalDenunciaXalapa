@@ -24,4 +24,8 @@ export class Form2Page implements OnInit {
     this.router.navigateByUrl('' + tab); // Reemplaza '/form1/' por la ruta correspondiente a tu vista dentro de form1
   }
 
+  guardar() {
+    this.router.navigateByUrl('/form3');
+}
+
 }

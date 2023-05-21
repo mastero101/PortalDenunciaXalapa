@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+interface Persona {
+  nombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+}
+
 @Component({
   selector: 'app-form1',
   templateUrl: './form1.page.html',
@@ -10,10 +16,11 @@ export class Form1Page implements OnInit {
   selectedTab: string = 'tab1';
   selectedOption: string;
   showCard: boolean = false;
-  nombres: string[] = [];
+  nombres: Persona[] = [];
   nombre: string = '';
   apellidoPaterno: string = '';
   apellidoMaterno: string = '';
+  
 
   constructor(private router: Router) {
     this.selectedOption = '';
@@ -42,25 +49,33 @@ export class Form1Page implements OnInit {
       // Modifica el estilo del elemento según tus necesidades
     }
   }
-}
-
-  agregar() {
-    if (this.nombre && this.apellidoPaterno && this.apellidoMaterno) {
-      const persona = 
-        this.nombre + " " +
-        this.apellidoPaterno + " " +
-        this.apellidoMaterno;
-      
-      this.nombres.push(persona);
-    }
-    this.showCard = false;
   }
 
-  eliminar(nombre: string) {
-    const index = this.nombres.indexOf(nombre);
+  agregar() {
+  if (this.nombre && this.apellidoPaterno && this.apellidoMaterno) {
+    const persona: Persona = {
+      nombre: this.nombre,
+      apellidoPaterno: this.apellidoPaterno,
+      apellidoMaterno: this.apellidoMaterno
+    };
+    
+    this.nombres.push(persona);
+    this.nombre = '';
+    this.apellidoPaterno = '';
+    this.apellidoMaterno = '';
+  }
+  this.showCard = false;  
+  }
+
+  eliminar(persona: Persona) {
+    const index = this.nombres.indexOf(persona);
     if (index !== -1) {
       this.nombres.splice(index, 1);
     }
+  }
+
+  guardar() {
+      this.router.navigateByUrl('/form2');
   }
 
 }

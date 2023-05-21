@@ -115,17 +115,21 @@
         <ion-input type="number" placeholder="Tel Fijo"></ion-input>
         <ion-button style="margin-left: 8em; margin-bottom: 1em;" (click)="agregar()">Agregar</ion-button>
       </ion-card>
-        <table *ngIf="nombres.length > 0" style="margin-top: 1em; margin-left: 2em; margin-bottom: 2em;">
-          <tr>
-            <th>Nombre</th>
-            <th></th>
-          </tr>
-          <tr *ngFor="let nombre of nombres">
-            <td>{{ nombres }}</td>
-            <td><ion-icon style="margin-left: 0.5em;" name="trash-outline" (click)="eliminar(nombre)"></ion-icon></td>
-          </tr>
-        </table>
-      <ion-button style="margin-left: 9em; margin-bottom: 5em;">Guardar</ion-button>
+      <table *ngIf="nombres.length > 0" style="margin-top: 1em; margin-left: 2em; margin-bottom: 2em;">
+        <tr>
+          <th>Nombre</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let persona of nombres">
+          <td style="padding-right: 0.5em">{{ persona.nombre }}</td>
+          <td></td>
+          <td style="padding-right: 0.5em;">{{ persona.apellidoPaterno }}</td>
+          <td></td>
+          <td >{{ persona.apellidoMaterno }}</td>
+          <td><ion-icon style="margin-left: 0.5em;" name="trash-outline" (click)="eliminar(persona)"></ion-icon></td>
+        </tr>
+      </table>
+      <ion-button style="margin-left: 9em; margin-bottom: 5em;" (click)="guardar()">Guardar</ion-button>
     </ion-content>
     </ion-card>
   </ion-content>
