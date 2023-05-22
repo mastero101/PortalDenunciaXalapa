@@ -25,6 +25,9 @@ export class Form1Page implements OnInit {
   municipios: { [estado: string]: string[] } = {};
   selectedEstado: string = '';
   selectedMunicipio: string | null = null;
+  selectedEstado2: string = '';
+  selectedMunicipio2: string | null = null;
+  
   
 
   constructor(private http: HttpClient, private router: Router) {
@@ -97,7 +100,7 @@ export class Form1Page implements OnInit {
   }
 
   onEstadoChange() {
-    this.selectedMunicipio = null;
+
   }
 
 }
