@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 interface Persona {
   nombre: string;
@@ -20,10 +21,15 @@ export class Form1Page implements OnInit {
   nombre: string = '';
   apellidoPaterno: string = '';
   apellidoMaterno: string = '';
+  estados: string[] = [];
+  municipios: { [estado: string]: string[] } = {};
+  selectedEstado: string = '';
+  selectedMunicipio: string | null = null;
   
 
-  constructor(private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     this.selectedOption = '';
+    this.loadData();
    }
 
   ngOnInit() {
@@ -76,6 +82,22 @@ export class Form1Page implements OnInit {
 
   guardar() {
       this.router.navigateByUrl('/form2');
+  }
+
+  loadData() {
+    this.http.get<any>('../../assets/estados-municipios.json').subscribe(
+      (data) => {
+        this.estados = Object.keys(data);
+        this.municipios = data;
+      },
+      (error) => {
+        console.log('Error al cargar los datos del archivo JSON', error);
+      }
+    );
+  }
+
+  onEstadoChange() {
+    this.selectedMunicipio = null;
   }
 
 }

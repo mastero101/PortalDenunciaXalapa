@@ -45,15 +45,11 @@
     <ion-card>
       <p style="margin-left: 2em;">Datos del domicilio</p>
     </ion-card>
-    <ion-select type="text" placeholder="Estado">
-      <ion-select-option value="opcion1">Veracruz</ion-select-option>
-      <ion-select-option value="opcion2">Tamaulipas</ion-select-option>
-      <ion-select-option value="opcion3">Villahermosa</ion-select-option>
+    <ion-select type="text" placeholder="Estado" [(ngModel)]="selectedEstado" (ionChange)="onEstadoChange()">
+      <ion-select-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
     </ion-select>
-    <ion-select type="text" placeholder="Municipio">
-      <ion-select-option value="opcion1">Xalapa</ion-select-option>
-      <ion-select-option value="opcion2">Acatlán</ion-select-option>
-      <ion-select-option value="opcion3">Acultzingo</ion-select-option>
+    <ion-select type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio">
+      <ion-select-option *ngFor="let municipio of municipios[selectedEstado]" [value]="municipio">{{ municipio }}</ion-select-option>
     </ion-select>
     <ion-select type="text" placeholder="Colonia">
       <ion-select-option value="opcion1">Revolucion</ion-select-option>
@@ -92,15 +88,11 @@
         <ion-card>
           <p style="margin-left: 2em;">Datos del domicilio</p>
         </ion-card>
-        <ion-select type="text" placeholder="Estado">
-          <ion-select-option value="opcion1">Veracruz</ion-select-option>
-          <ion-select-option value="opcion2">Tamaulipas</ion-select-option>
-          <ion-select-option value="opcion3">Villahermosa</ion-select-option>
+        <ion-select type="text" placeholder="Estado" [(ngModel)]="selectedEstado" (ionChange)="onEstadoChange()">
+          <ion-select-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
         </ion-select>
-        <ion-select type="text" placeholder="Municipio">
-          <ion-select-option value="opcion1">Xalapa</ion-select-option>
-          <ion-select-option value="opcion2">Acatlán</ion-select-option>
-          <ion-select-option value="opcion3">Acultzingo</ion-select-option>
+        <ion-select type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio">
+          <ion-select-option *ngFor="let municipio of municipios[selectedEstado]" [value]="municipio">{{ municipio }}</ion-select-option>
         </ion-select>
         <ion-select type="text" placeholder="Colonia">
           <ion-select-option value="opcion1">Revolucion</ion-select-option>
