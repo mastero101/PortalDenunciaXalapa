@@ -51,11 +51,12 @@
     <ion-select type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio">
       <ion-select-option *ngFor="let municipio of municipios[selectedEstado]" [value]="municipio">{{ municipio }}</ion-select-option>
     </ion-select>
-    <ion-select type="text" placeholder="Colonia">
+<!--<ion-select type="text" placeholder="Colonia">
       <ion-select-option value="opcion1">Revolucion</ion-select-option>
       <ion-select-option value="opcion2">Acatlán</ion-select-option>
       <ion-select-option value="opcion3">Acultzingo</ion-select-option>
     </ion-select>
+--> <ion-input type="text" placeholder="Colonia"></ion-input>
     <ion-input type="number" placeholder="C.P"></ion-input>
     <ion-input type="text" placeholder="Calle"></ion-input>
     <ion-input type="number" placeholder="No exterior"></ion-input>
