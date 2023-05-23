@@ -12,6 +12,7 @@ export class Form3Page implements OnInit {
   selectedOption2: string;
   selectedOption3: string;
   showFormFields: boolean = false;
+  showFormFields2: boolean = false;
   estatura: number = 1.40;
 
   constructor(private router: Router) {
@@ -35,6 +36,10 @@ export class Form3Page implements OnInit {
 
   toggleFormFields(event: any) {
     this.showFormFields = event.detail.checked;
+  }
+
+  toggleFormFields2(event: any) {
+    this.showFormFields2 = event.detail.checked;
   }
 
 }

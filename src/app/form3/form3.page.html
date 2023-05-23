@@ -36,9 +36,9 @@
       <p style="font-size: 14px;">Seleccione la Casilla si tu respuesta es Si</p>
     </ion-card>
     <p>¿Identifica las características de la persona que cometió el delito?</p>
+
     <ion-checkbox style="font-size: 11px; margin-left: 1.5em;" (ionChange)="toggleFormFields($event)"></ion-checkbox>
     <div *ngIf="showFormFields">
-
       <!-- Aquí van los campos que deseas mostrar cuando se selecciona el checkbox -->
     <ion-card style="height: 102em;">
       <ion-card><p style="text-align:center;">Probable responsable de los hechos con apariencia de delito</p></ion-card>
@@ -104,12 +104,43 @@
           <ion-label slot="end">2.10m</ion-label>
         </ion-range>
       </ion-item>
-      <ion-button style="margin-left: 8.5em; margin-bottom: 5em;">Agregar</ion-button>
+      <ion-button style="margin-left: 8.5em; margin-bottom: 5em;" (click)="toggleFormFields($event)">Agregar</ion-button>
     </ion-card>
-
     </div>
+
     <p>¿Identifica el hecho con apariencia de delito?</p>
-    <ion-checkbox style="font-size: 11px; margin-left: 1.5em;"></ion-checkbox>
+    <ion-checkbox style="font-size: 11px; margin-left: 1.5em;" (ionChange)="toggleFormFields2($event)"></ion-checkbox>
+    <div *ngIf="showFormFields2">
+      <ion-card>
+        <ion-select type="text" placeholder="Seleccione el delito correspondiente a los hechos">
+          <ion-select-option value="Abuso de Confianza">Abuso de Confianza</ion-select-option>
+          <ion-select-option value="Abuso Sexual">Abuso Sexual</ion-select-option>
+          <ion-select-option value="Allanamiento de Morada">Allanamiento de Morada</ion-select-option>
+          <ion-select-option value="Amenzas">Amenzas</ion-select-option>
+          <ion-select-option value="Ciberacoso">Ciberacoso</ion-select-option>
+          <ion-select-option value="Cohecho">Cohecho</ion-select-option>
+          <ion-select-option value="Daño en Propiedad Ajena">Daño en Propiedad Ajena</ion-select-option>
+          <ion-select-option value="Delitos Electorales Realizados por Funcionarios Electorales">Delitos Electorales Realizados por Funcionarios Electorales</ion-select-option>
+          <ion-select-option value="Delitos Electorales Realizados por Funcionarios Partidistas o Candidatos">Delitos Electorales Realizados por Funcionarios Partidistas o Candidatos</ion-select-option>
+          <ion-select-option value="Delitos Electorales Realizados por Particulares">Delitos Electorales Realizados por Particulares</ion-select-option>
+          <ion-select-option value="Delitos Electorales Realizados por Servidores Publicos">Delitos Electorales Realizados por Servidores Publicos</ion-select-option>
+          <ion-select-option value="Delitos en Contra de los Animales">Delitos en Contra de los Animales</ion-select-option>
+          <ion-select-option value="Desaparición de persona por particulares">Desaparición de persona por particulares</ion-select-option>
+          <ion-select-option value="Desaparición forzada de personas">Desaparición forzada de personas</ion-select-option>
+          <ion-select-option value="Despojo sin violencia">Despojo sin violencia</ion-select-option>
+          <ion-select-option value="Discriminación">Discriminación</ion-select-option>
+          <ion-select-option value="Enriquecimiento ilícito">Enriquecimiento ilícito</ion-select-option>
+          <ion-select-option value="Hostigamiento sexual"> Hostigamiento sexual</ion-select-option>
+          <ion-select-option value="Peculado">Peculado</ion-select-option>
+          <ion-select-option value="Robo a casa habitación sin violencia">Robo a casa habitación sin violencia</ion-select-option>
+          <ion-select-option value="Robo a comercio sin violencia">Robo a comercio sin violencia</ion-select-option>
+          <ion-select-option value="Robo a transeúnte">Robo a transeúnte</ion-select-option>
+          <ion-select-option value="Robo sin violencia">Robo sin violencia</ion-select-option>
+          <ion-select-option value="Violencia familiar">Violencia familiar</ion-select-option>
+        </ion-select>
+      </ion-card>
+    </div>
+
     <ion-card>
       <p style="margin-left: 0.5em;">Responda cuidadosamente</p>
     </ion-card>
