@@ -36,7 +36,78 @@
       <p style="font-size: 14px;">Seleccione la Casilla si tu respuesta es Si</p>
     </ion-card>
     <p>¿Identifica las características de la persona que cometió el delito?</p>
-    <ion-checkbox style="font-size: 11px; margin-left: 1.5em;"></ion-checkbox>
+    <ion-checkbox style="font-size: 11px; margin-left: 1.5em;" (ionChange)="toggleFormFields($event)"></ion-checkbox>
+    <div *ngIf="showFormFields">
+
+      <!-- Aquí van los campos que deseas mostrar cuando se selecciona el checkbox -->
+    <ion-card style="height: 102em;">
+      <ion-card><p style="text-align:center;">Probable responsable de los hechos con apariencia de delito</p></ion-card>
+      <p>Datos del probable responsable</p>
+      <ion-input type="text" placeholder="Nombre (s)"></ion-input>
+      <ion-input type="text" placeholder="Apellido Paterno"></ion-input>
+      <ion-input type="text" placeholder="Apellido Materno"></ion-input>
+      <p>Fecha de Nacimiento</p>
+      <ion-input type="date" placeholder="Fecha"></ion-input>
+      <ion-select type="text" placeholder="Genero">
+        <ion-select-option value="Hombre">Hombre</ion-select-option>
+        <ion-select-option value="Mujer">Mujer</ion-select-option>
+        <ion-select-option value="Otro">Otro</ion-select-option>
+      </ion-select>
+      <ion-input type="text" placeholder="Alias"></ion-input>
+      <p>Datos del domicilio</p>
+      <ion-select placeholder="Estado">
+      </ion-select>
+      <ion-select placeholder="Municipio">
+      </ion-select>
+      <ion-input type="text" placeholder="Colonia"></ion-input>
+      <ion-input type="text" placeholder="Calle"></ion-input>
+      <ion-input type="text" placeholder="No Exterior"></ion-input>
+      <ion-input type="text" placeholder="No Interior"></ion-input>
+      <p>Señas Particulares</p>
+      <ion-select type="text" placeholder="Color de Piel">
+        <ion-select-option value="Blanco">Blanco</ion-select-option>
+        <ion-select-option value="Negro">Negro</ion-select-option>
+        <ion-select-option value="Moreno">Moreno</ion-select-option>
+      </ion-select>
+      <ion-select type="text" placeholder="Color de Ojos">
+        <ion-select-option value="Marron">Marron</ion-select-option>
+        <ion-select-option value="Azul">Azul</ion-select-option>
+        <ion-select-option value="Verde">Verde</ion-select-option>
+        <ion-select-option value="Miel">Miel</ion-select-option>
+      </ion-select>
+      <ion-select type="text" placeholder="Tipo de Cabello">
+        <ion-select-option value="Rizado">Lacio</ion-select-option>
+        <ion-select-option value="Ondulado">Ondulado</ion-select-option>
+        <ion-select-option value="Rizado">Rizado</ion-select-option>
+        <ion-select-option value="Crespo">Crespo</ion-select-option>
+      </ion-select>
+      <ion-select type="text" placeholder="Color de Cabello">
+        <ion-select-option value="Negro">Negro</ion-select-option>
+        <ion-select-option value="Castaño">Castaño</ion-select-option>
+        <ion-select-option value="rubio">Rubio</ion-select-option>
+        <ion-select-option value="Pelirrojo">Pelirrojo</ion-select-option>
+      </ion-select>
+      <ion-select type="text" placeholder="Complexion">
+        <ion-select-option value="Robusta">Robusta</ion-select-option>
+        <ion-select-option value="Delgada">Delgada</ion-select-option>
+        <ion-select-option value="Obesa">Obesa</ion-select-option>
+      </ion-select>
+      <ion-select type="text" placeholder="Tiene tatuajes">
+        <ion-select-option value="Si">Si</ion-select-option>
+        <ion-select-option value="No">No</ion-select-option>
+      </ion-select>
+      <p>Estatura</p>
+      <ion-item>
+        <ion-range min="1.40" max="2.50" step="0.05" snaps="true" [(ngModel)]="estatura">
+          <ion-label slot="start">1.40m</ion-label>
+          <ion-label slot="end">2.10m</ion-label>
+        </ion-range>
+        <p>{{estatura}}{{" m"}}</p>
+      </ion-item>
+      <ion-button style="margin-left: 8.5em; margin-bottom: 5em;">Agregar</ion-button>
+    </ion-card>
+
+    </div>
     <p>¿Identifica el hecho con apariencia de delito?</p>
     <ion-checkbox style="font-size: 11px; margin-left: 1.5em;"></ion-checkbox>
     <ion-card>

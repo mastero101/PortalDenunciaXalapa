@@ -11,6 +11,8 @@ export class Form3Page implements OnInit {
   selectedOption: string;
   selectedOption2: string;
   selectedOption3: string;
+  showFormFields: boolean = false;
+  estatura: number = 1.40;
 
   constructor(private router: Router) {
     this.selectedOption = '';
@@ -29,6 +31,10 @@ export class Form3Page implements OnInit {
   navigateTo(tab: string) {
     this.selectedTab = 'tab3';
     this.router.navigateByUrl('' + tab); // Reemplaza '/form1/' por la ruta correspondiente a tu vista dentro de form1
+  }
+
+  toggleFormFields(event: any) {
+    this.showFormFields = event.detail.checked;
   }
 
 }
