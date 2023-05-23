@@ -99,9 +99,9 @@
       <p>Estatura</p>
       <ion-item>
         <p>{{estatura}}{{" m"}}</p>
-        <ion-range min="1.40" max="2.50" step="0.05" snaps="true" [(ngModel)]="estatura">
+        <ion-range min="1.40" max="2.20" step="0.05" snaps="true" [(ngModel)]="estatura">
           <ion-label slot="start">1.40m</ion-label>
-          <ion-label slot="end">2.10m</ion-label>
+          <ion-label slot="end">2.20m</ion-label>
         </ion-range>
       </ion-item>
       <ion-button style="margin-left: 8.5em; margin-bottom: 5em;" (click)="toggleFormFields($event)">Agregar</ion-button>
@@ -184,8 +184,25 @@
         <ion-select type="text" placeholder="Unidad de Investigación" style="margin-left: 2em;">
           <ion-select-option value="opcion1" style="font-size: 5px;">Fiscalía General Del Estado De Veracruz</ion-select-option>
         </ion-select>
-        <ion-button style="margin-left: 9.5em;">Enviar</ion-button>
+        <ion-button style="margin-left: 9.5em;" (click)="enviarDenuncia()">Enviar</ion-button>
       </ion-content>
+
+            <!-- Pantalla de confirmación de envío -->
+      <div *ngIf="mostrarConfirmacion">
+        <p>Atención</p>
+        <p>¿Desea enviar la denuncia?</p>
+        <button (click)="enviarDenuncia()">Si</button>
+        <button (click)="cancelarEnvio()">No</button>
+      </div>
+
+      <!-- Pantalla de confirmación de envío exitoso -->
+      <div *ngIf="mostrarConfirmacionExitosa">
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <p>Su denuncia ha sido enviada</p>
+        <button (click)="realizarOtraDenuncia()">Realizar otra denuncia</button>
+        <button (click)="irAInicio()">Inicio</button>
+        <button (click)="verFolio()">Ver Folio</button>
+      </div>
 
   </ion-content>
 
