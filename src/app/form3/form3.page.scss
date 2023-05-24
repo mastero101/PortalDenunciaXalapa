@@ -10,3 +10,10 @@ ion-input {
 ion-select {
     margin-left: 2em;
 }
+
+.custom-select{
+    margin-left: 0em;
+    font-size: small;
+    width:fit-content; /* Ajusta la altura máxima deseada */
+    overflow-y: auto; /* Agrega desplazamiento vertical */
+  }

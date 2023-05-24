@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class Form4Page implements OnInit {
   selectedTab: string = 'tab4';
+  envioExitoso: boolean = false;
+  ocultarElementos: boolean = false;
 
   constructor(private router: Router) { }
 
@@ -24,5 +26,28 @@ export class Form4Page implements OnInit {
     this.router.navigateByUrl('' + tab); // Reemplaza '/form1/' por la ruta correspondiente a tu vista dentro de form1
   }
 
+  enviarDenuncia() {
+    // Lógica para enviar la denuncia
 
+    // Una vez que se confirma el envío, se establece la variable envioExitoso como verdadera
+    this.envioExitoso = true;
+    this.ocultarElementos = true;
+  }
+
+  noEnviar(){
+    this.router.navigate(['/form3']);
+    this.envioExitoso = false;
+  }
+
+  realizarOtraDenuncia(){
+
+  }
+
+  irAInicio(){
+
+  }
+
+  verFolio(){
+
+  }
 }

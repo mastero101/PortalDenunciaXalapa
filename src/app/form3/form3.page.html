@@ -21,10 +21,7 @@
       <ion-segment-button value="tab3" (click)="navigateTo('form3')">
         <ion-label>Paso 3</ion-label>
       </ion-segment-button>
-  
-      <ion-segment-button value="tab4" (click)="navigateTo('form4')">
-        <ion-label>Paso 4</ion-label>
-      </ion-segment-button>
+      
     </ion-segment>
   </ion-toolbar>
 
@@ -48,51 +45,53 @@
       <ion-input type="text" placeholder="Apellido Materno"></ion-input>
       <p>Fecha de Nacimiento</p>
       <ion-input type="date" placeholder="Fecha"></ion-input>
-      <ion-select type="text" placeholder="Genero">
+      <ion-select interface="popover" type="text" placeholder="Genero">
         <ion-select-option value="Hombre">Hombre</ion-select-option>
         <ion-select-option value="Mujer">Mujer</ion-select-option>
         <ion-select-option value="Otro">Otro</ion-select-option>
       </ion-select>
       <ion-input type="text" placeholder="Alias"></ion-input>
       <p>Datos del domicilio</p>
-      <ion-select placeholder="Estado">
+      <ion-select interface="popover" type="text" placeholder="Estado" [(ngModel)]="selectedEstado3">
+        <ion-select-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
       </ion-select>
-      <ion-select placeholder="Municipio">
+      <ion-select interface="popover" type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio3">
+        <ion-select-option *ngFor="let municipio of municipios[selectedEstado3]" [value]="municipio">{{ municipio }}</ion-select-option>
       </ion-select>
       <ion-input type="text" placeholder="Colonia"></ion-input>
       <ion-input type="text" placeholder="Calle"></ion-input>
       <ion-input type="text" placeholder="No Exterior"></ion-input>
       <ion-input type="text" placeholder="No Interior"></ion-input>
       <p>Señas Particulares</p>
-      <ion-select type="text" placeholder="Color de Piel">
+      <ion-select interface="popover" type="text" placeholder="Color de Piel">
         <ion-select-option value="Blanco">Blanco</ion-select-option>
         <ion-select-option value="Negro">Negro</ion-select-option>
         <ion-select-option value="Moreno">Moreno</ion-select-option>
       </ion-select>
-      <ion-select type="text" placeholder="Color de Ojos">
+      <ion-select interface="popover" type="text" placeholder="Color de Ojos">
         <ion-select-option value="Marron">Marron</ion-select-option>
         <ion-select-option value="Azul">Azul</ion-select-option>
         <ion-select-option value="Verde">Verde</ion-select-option>
         <ion-select-option value="Miel">Miel</ion-select-option>
       </ion-select>
-      <ion-select type="text" placeholder="Tipo de Cabello">
+      <ion-select interface="popover" type="text" placeholder="Tipo de Cabello">
         <ion-select-option value="Rizado">Lacio</ion-select-option>
         <ion-select-option value="Ondulado">Ondulado</ion-select-option>
         <ion-select-option value="Rizado">Rizado</ion-select-option>
         <ion-select-option value="Crespo">Crespo</ion-select-option>
       </ion-select>
-      <ion-select type="text" placeholder="Color de Cabello">
+      <ion-select interface="popover" type="text" placeholder="Color de Cabello">
         <ion-select-option value="Negro">Negro</ion-select-option>
         <ion-select-option value="Castaño">Castaño</ion-select-option>
         <ion-select-option value="rubio">Rubio</ion-select-option>
         <ion-select-option value="Pelirrojo">Pelirrojo</ion-select-option>
       </ion-select>
-      <ion-select type="text" placeholder="Complexion">
+      <ion-select interface="popover" type="text" placeholder="Complexion">
         <ion-select-option value="Robusta">Robusta</ion-select-option>
         <ion-select-option value="Delgada">Delgada</ion-select-option>
         <ion-select-option value="Obesa">Obesa</ion-select-option>
       </ion-select>
-      <ion-select type="text" placeholder="Tiene tatuajes">
+      <ion-select interface="popover" type="text" placeholder="Tiene tatuajes">
         <ion-select-option value="Si">Si</ion-select-option>
         <ion-select-option value="No">No</ion-select-option>
       </ion-select>
@@ -112,7 +111,7 @@
     <ion-checkbox style="font-size: 11px; margin-left: 1.5em;" (ionChange)="toggleFormFields2($event)"></ion-checkbox>
     <div *ngIf="showFormFields2">
       <ion-card>
-        <ion-select type="text" placeholder="Seleccione el delito correspondiente a los hechos">
+        <ion-select class="custom-select" interface="popover" placeholder="Seleccione el delito correspondiente a los hechos">
           <ion-select-option value="Abuso de Confianza">Abuso de Confianza</ion-select-option>
           <ion-select-option value="Abuso Sexual">Abuso Sexual</ion-select-option>
           <ion-select-option value="Allanamiento de Morada">Allanamiento de Morada</ion-select-option>
@@ -120,8 +119,8 @@
           <ion-select-option value="Ciberacoso">Ciberacoso</ion-select-option>
           <ion-select-option value="Cohecho">Cohecho</ion-select-option>
           <ion-select-option value="Daño en Propiedad Ajena">Daño en Propiedad Ajena</ion-select-option>
-          <ion-select-option value="Delitos Electorales Realizados por Funcionarios Electorales">Delitos Electorales Realizados por Funcionarios Electorales</ion-select-option>
-          <ion-select-option value="Delitos Electorales Realizados por Funcionarios Partidistas o Candidatos">Delitos Electorales Realizados por Funcionarios Partidistas o Candidatos</ion-select-option>
+          <ion-select-option style="font-size: 3px;" value="Delitos Electorales Realizados por Funcionarios Electorales"><p style="font-size: 3px;">Delitos Electorales Realizados por Funcionarios Electorales</p></ion-select-option>
+          <ion-select-option value="Delitos Electorales Realizados por Funcionarios Partidistas o Candidatos">Delitos Electorales Realizados por Partidistas/Candidatos</ion-select-option>
           <ion-select-option value="Delitos Electorales Realizados por Particulares">Delitos Electorales Realizados por Particulares</ion-select-option>
           <ion-select-option value="Delitos Electorales Realizados por Servidores Publicos">Delitos Electorales Realizados por Servidores Publicos</ion-select-option>
           <ion-select-option value="Delitos en Contra de los Animales">Delitos en Contra de los Animales</ion-select-option>
@@ -181,28 +180,10 @@
         <ion-card>
           <p>Seleccione la Unidad de Investigación más cercana para el seguimiento de su denuncia</p>
         </ion-card>
-        <ion-select type="text" placeholder="Unidad de Investigación" style="margin-left: 2em;">
-          <ion-select-option value="opcion1" style="font-size: 5px;">Fiscalía General Del Estado De Veracruz</ion-select-option>
+        <ion-select interface="popover" type="text" placeholder="Unidad de Investigación" style="margin-left: 1em;">
+          <ion-select-option value="Fiscalía General Del Estado De Veracruz" style="font-size: 5px;">Fiscalía General Del Estado De Veracruz</ion-select-option>
         </ion-select>
-        <ion-button style="margin-left: 9.5em;" (click)="enviarDenuncia()">Enviar</ion-button>
+        <ion-button style="margin-left: 9.5em;" (click)="enviar()">Enviar</ion-button>
       </ion-content>
-
-            <!-- Pantalla de confirmación de envío -->
-      <div *ngIf="mostrarConfirmacion">
-        <p>Atención</p>
-        <p>¿Desea enviar la denuncia?</p>
-        <button (click)="enviarDenuncia()">Si</button>
-        <button (click)="cancelarEnvio()">No</button>
-      </div>
-
-      <!-- Pantalla de confirmación de envío exitoso -->
-      <div *ngIf="mostrarConfirmacionExitosa">
-        <ion-icon name="checkmark-circle"></ion-icon>
-        <p>Su denuncia ha sido enviada</p>
-        <button (click)="realizarOtraDenuncia()">Realizar otra denuncia</button>
-        <button (click)="irAInicio()">Inicio</button>
-        <button (click)="verFolio()">Ver Folio</button>
-      </div>
-
   </ion-content>
 

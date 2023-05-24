@@ -27,3 +27,31 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
+
+  <div *ngIf="!envioExitoso">
+    <ion-card class="ion-text-center" *ngIf="!ocultarElementos">
+      <ion-card-header>
+        <ion-card-title>Atención</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="deseaEnviar">¿Desea enviar la denuncia?</p>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="6">
+            <ion-button expand="full" value="Si" (click)="enviarDenuncia()">Si</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="full" value="No" (click)="noEnviar()">No</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="envioExitoso" class="confirmacion-envio">
+    <p style="margin-top: 2em;">Su denuncia ha sido enviada</p>
+    <ion-icon name='checkmark-circle-outline' size="large" class="icono-ok"></ion-icon>
+    <ion-button expand="full" (click)="realizarOtraDenuncia()">Realizar otra denuncia</ion-button>
+    <ion-button expand="full" (click)="irAInicio()">Inicio</ion-button>
+    <ion-button expand="full" (click)="verFolio()">Ver Folio</ion-button>
+  </div>
+  

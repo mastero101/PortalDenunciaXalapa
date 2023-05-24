@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-form3',
@@ -14,16 +15,19 @@ export class Form3Page implements OnInit {
   showFormFields: boolean = false;
   showFormFields2: boolean = false;
   estatura: number = 1.40;
-  mostrarConfirmacion: boolean = true;
-  mostrarConfirmacionExitosa: boolean = false; 
+  estados: string[] = [];
+  municipios: { [estado: string]: string[] } = {};
+  selectedEstado3: string = '';
+  selectedMunicipio3: string | null = null;
 
-  constructor(private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     this.selectedOption = '';
     this.selectedOption2 = '';
     this.selectedOption3 = '';
    }
 
   ngOnInit() {
+    this.loadData();
   }
 
   onTabChange(event: any) {
@@ -44,41 +48,19 @@ export class Form3Page implements OnInit {
     this.showFormFields2 = event.detail.checked;
   }
 
-  enviarDenuncia() {
-    // Aquí puedes realizar las acciones necesarias para enviar la denuncia
-    // por ejemplo, realizar una petición HTTP al servidor
-  
-    // Después de enviar la denuncia exitosamente, mostramos la pantalla de confirmación exitosa
-    this.mostrarConfirmacion = false;
-    this.mostrarConfirmacionExitosa = true;
+  loadData() {
+    this.http.get<any>('../../assets/estados-municipios.json').subscribe(
+      (data) => {
+        this.estados = Object.keys(data);
+        this.municipios = data;
+      },
+      (error) => {
+        console.log('Error al cargar los datos del archivo JSON', error);
+      }
+    );
   }
 
-  cancelarEnvio() {
-    // Aquí puedes realizar las acciones necesarias al cancelar el envío de la denuncia
-    // por ejemplo, restablecer los campos del formulario
-  
-    // Volvemos a mostrar la pantalla de confirmación
-    this.mostrarConfirmacion = true;
-    this.mostrarConfirmacionExitosa = false;
+  enviar(){
+    this.router.navigate(['/form4']);
   }
-  
-  // Función para realizar otra denuncia
-  realizarOtraDenuncia() {
-    // Aquí puedes realizar las acciones necesarias para iniciar una nueva denuncia
-  
-    // Volvemos a mostrar la pantalla de confirmación
-    this.mostrarConfirmacion = true;
-    this.mostrarConfirmacionExitosa = false;
-  }
-  
-  // Función para ir a la página de inicio
-  irAInicio() {
-    // Aquí puedes realizar las acciones necesarias para navegar a la página de inicio
-  }
-  
-  // Función para ver el folio de la denuncia
-  verFolio() {
-    // Aquí puedes realizar las acciones necesarias para mostrar el folio de la denuncia
-  }
-
 }
