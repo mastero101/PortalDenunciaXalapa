@@ -1,17 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title> Búsqueda y Seguimiento por Folio </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-content>
+    <ion-card>
+      <ion-card-header> Número de Folio: <p>{{ folioNumber }}</p></ion-card-header>
+      <ion-card-content>
+        Estado: <p>{{ status }}</p><br/>
+        Seguimiento: <p style="margin-top: 0.2em;">{{ trackingStatus }}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-button style="margin-left: 10em; margin-bottom: 2em; margin-top: 1em;" expand="default" routerLink="/tabs/tab1">Inicio</ion-button>
+  </ion-content>
+
 </ion-content>

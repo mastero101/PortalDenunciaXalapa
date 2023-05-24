@@ -6,7 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  folioNumber: number;
+  status: string;
+  trackingStatus: string;
 
-  constructor() {}
+  constructor() {
+    this.folioNumber = 3858719;
+    this.status = 'Activo';
+    this.trackingStatus = 'En espera de aprobación';
+  }
 
 }
