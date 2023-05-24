@@ -1,17 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Seguimiento
     </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card style="margin-top: 15em;" class="container">
+    <h2 style="text-align:center;">Búsqueda y Seguimiento por Folio</h2>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-card>
+      <ion-input type="text" placeholder="Ingrese el folio generado tal y como fue enviado a su email"></ion-input>
+    </ion-card>
+
+    <div class="captcha-container">
+      <!-- Aquí puedes incluir el componente CAPTCHA -->
+    </div>
+
+    <ion-button style="margin-left: 9em; margin-bottom: 2em; margin-top: 1em;" expand="default">Buscar</ion-button>
+  </ion-card>
 </ion-content>

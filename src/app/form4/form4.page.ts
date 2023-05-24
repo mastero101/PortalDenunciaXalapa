@@ -10,6 +10,9 @@ export class Form4Page implements OnInit {
   selectedTab: string = 'tab4';
   envioExitoso: boolean = false;
   ocultarElementos: boolean = false;
+  mostrarFolio: boolean = false;
+  mostrarElementos: boolean = false;
+  folio: number = 1;
 
   constructor(private router: Router) { }
 
@@ -40,14 +43,16 @@ export class Form4Page implements OnInit {
   }
 
   realizarOtraDenuncia(){
-
+    this.router.navigate(['/form1']);
   }
 
   irAInicio(){
-
+    this.router.navigate(['/']);
   }
 
   verFolio(){
-
+    this.mostrarFolio = true;
+    this.mostrarElementos = true;
+    this.folio = 123456789;
   }
 }

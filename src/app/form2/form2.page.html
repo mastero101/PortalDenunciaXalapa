@@ -41,10 +41,10 @@
     <ion-card>
       <p style="margin-left: 0.5em; font-size: 14px;">Datos del Domicilio</p>
     </ion-card>
-    <ion-select type="text" placeholder="Estado" [(ngModel)]="selectedEstado" (ionChange)="onEstadoChange()">
+    <ion-select interface="popover" type="text" placeholder="Estado" [(ngModel)]="selectedEstado" (ionChange)="onEstadoChange()">
       <ion-select-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
     </ion-select>
-    <ion-select type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio">
+    <ion-select interface="popover" type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio">
       <ion-select-option *ngFor="let municipio of municipios[selectedEstado]" [value]="municipio">{{ municipio }}</ion-select-option>
     </ion-select>
 <!--  <ion-select type="text" placeholder="Colonia">

@@ -42,18 +42,13 @@
     <ion-card>
       <p style="margin-left: 2em;">Datos del domicilio</p>
     </ion-card>
-    <ion-select type="text" placeholder="Estado" [(ngModel)]="selectedEstado" (ionChange)="onEstadoChange()">
+    <ion-select interface="popover" type="text" placeholder="Estado" [(ngModel)]="selectedEstado" (ionChange)="onEstadoChange()">
       <ion-select-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
     </ion-select>
-    <ion-select type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio">
+    <ion-select interface="popover" type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio">
       <ion-select-option *ngFor="let municipio of municipios[selectedEstado]" [value]="municipio">{{ municipio }}</ion-select-option>
     </ion-select>
-<!--<ion-select type="text" placeholder="Colonia">
-      <ion-select-option value="opcion1">Revolucion</ion-select-option>
-      <ion-select-option value="opcion2">Acatlán</ion-select-option>
-      <ion-select-option value="opcion3">Acultzingo</ion-select-option>
-    </ion-select>
---> <ion-input type="text" placeholder="Colonia"></ion-input>
+    <ion-input type="text" placeholder="Colonia"></ion-input>
     <ion-input type="number" placeholder="C.P"></ion-input>
     <ion-input type="text" placeholder="Calle"></ion-input>
     <ion-input type="number" placeholder="No exterior"></ion-input>
@@ -86,17 +81,13 @@
         <ion-card>
           <p style="margin-left: 2em;">Datos del domicilio</p>
         </ion-card>
-        <ion-select type="text" placeholder="Estado" [(ngModel)]="selectedEstado2" (ionChange)="onEstadoChange()">
+        <ion-select interface="popover" type="text" placeholder="Estado" [(ngModel)]="selectedEstado2" (ionChange)="onEstadoChange()">
           <ion-select-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
         </ion-select>
-        <ion-select type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio2">
+        <ion-select interface="popover" type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio2">
           <ion-select-option *ngFor="let municipio of municipios[selectedEstado2]" [value]="municipio">{{ municipio }}</ion-select-option>
         </ion-select>
-        <ion-select type="text" placeholder="Colonia">
-          <ion-select-option value="opcion1">Revolucion</ion-select-option>
-          <ion-select-option value="opcion2">Acatlán</ion-select-option>
-          <ion-select-option value="opcion3">Acultzingo</ion-select-option>
-        </ion-select>
+        <ion-input type="text" placeholder="Colonia"></ion-input>
         <ion-input type="number" placeholder="C.P"></ion-input>
         <ion-input type="text" placeholder="Calle"></ion-input>
         <ion-input type="number" placeholder="No exterior"></ion-input>

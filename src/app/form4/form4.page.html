@@ -54,4 +54,11 @@
     <ion-button expand="full" (click)="irAInicio()">Inicio</ion-button>
     <ion-button expand="full" (click)="verFolio()">Ver Folio</ion-button>
   </div>
+
+  <div *ngIf="mostrarFolio" class="confirmacion-envio">
+    <p style="margin-top: 0em; margin-left: 10em;">Folio</p>
+    <ion-card>
+      <p style="margin-top: 0em; margin-left: 9.2em;">{{ folio }}</p>
+    </ion-card>
+  </div>
   
