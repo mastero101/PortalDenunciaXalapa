@@ -7,17 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  captchaVerified: boolean = false;
 
   constructor(private router: Router) {}
 
   buscar(){
-    console.log("Captcha Works");
-    this.router.navigate(['/tabs/tab3']);
+    if (this.captchaVerified) {
+      console.log("Captcha Works");
+      this.router.navigate(['/tabs/tab3']);
+    } else {
+      console.log("Captcha verification failed");
+    }
   }
   
     onVerify(token: string) {
       // The verification process was successful.
       // You can verify the token on your server now.
+      this.captchaVerified = true;
   }
 
   onExpired(response: any) {
