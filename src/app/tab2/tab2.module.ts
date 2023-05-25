@@ -6,6 +6,7 @@ import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { NgHcaptchaModule } from 'ng-hcaptcha';
 
 @NgModule({
   imports: [
@@ -13,7 +14,11 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab2PageRoutingModule
+    Tab2PageRoutingModule,
+    NgHcaptchaModule.forRoot({
+      siteKey: '6a33385b-0a79-4d19-8b85-f77fac596c05',
+      languageCode: 'es' // optional, will default to browser language
+    }),
   ],
   declarations: [Tab2Page]
 })

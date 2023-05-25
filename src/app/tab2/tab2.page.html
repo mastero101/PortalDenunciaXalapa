@@ -17,9 +17,13 @@
       <ion-input type="text" placeholder="Ingrese el folio generado tal y como fue enviado a su email"></ion-input>
     </ion-card>
 
-    <div class="captcha-container">
-      <!-- Aquí puedes incluir el componente CAPTCHA -->
-    </div>
+    <ion-card class="captcha-container" style="margin-left:1.3em;">
+      <ng-hcaptcha 
+        (verify)="onVerify($event)"
+        (expired)="onExpired($event)"
+        (error)="onError($event)">
+      </ng-hcaptcha>
+    </ion-card>
 
     <ion-button style="margin-left: 9em; margin-bottom: 2em; margin-top: 1em;" expand="default" (click)="buscar()">Buscar</ion-button>
   </ion-card>
