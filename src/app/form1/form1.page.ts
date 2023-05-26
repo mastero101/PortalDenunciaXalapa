@@ -30,23 +30,21 @@ export class Form1Page implements OnInit {
   selectedEstado2: string = '';
   selectedMunicipio2: string | null = null;
    id_denunciante = 1;
-   folio = '123456';
-   name = 'Juan';
-   apellido_paterno = 'Pérez';
-   apellido_materno = 'Gómez';
-   fecha_nacimiento = '1990-05-10';
-   genero = 'Masculino';
-   escolaridad = 'Universidad';
-   correo_electronico = 'juan@example.com';
-   estado = 'Estado';
-   municipio = 'Municipio';
-   colonia = 'Colonia';
-   codigo_postal = '12345';
-   calle = 'Calle';
-   no_exterior = '123';
-   no_interior = 'A';
-   tel_celular = '555-123-4567';
-   tel_fijo = '555-987-6543';
+   folio = this.generarFolio();
+   name: string = '';
+   apellido_paterno: string = '';
+   apellido_materno: string = '';
+   fecha_nacimiento: string = '';
+   genero: string = '';
+   escolaridad: string = '';
+   correo_electronico: string = '';
+   colonia: string = '';
+   codigo_postal: string = '';
+   calle: string = '';
+   no_exterior: string = '';
+   no_interior: string = '';
+   tel_celular: string = '';
+   tel_fijo: string = '';
    es_victima = true;
   
   constructor(private http: HttpClient, private router: Router) {
@@ -55,6 +53,12 @@ export class Form1Page implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  generarFolio() {
+    var folio = Math.floor(Math.random() * 900000) + 100000;
+    console.log("Folio: " + folio);
+    return folio;
   }
 
   onTabChange(event: any) {
@@ -102,10 +106,7 @@ export class Form1Page implements OnInit {
     }
   }
 
-  guardar() {
-      this.router.navigateByUrl('/form2');
-  }
-
+  
   loadData() {
     this.http.get<any>('../../assets/estados-municipios.json').subscribe(
       (data) => {
@@ -115,18 +116,22 @@ export class Form1Page implements OnInit {
       (error) => {
         console.log('Error al cargar los datos del archivo JSON', error);
       }
-    );
-  }
-
-  onEstadoChange() {
-
+      );
+    }
+    
+    onEstadoChange() {
+      
+    }
+    
+  siguiente() {
+      this.router.navigateByUrl('/form2');
   }
 
   guardar2() {
     const data = {
       id_denunciante: this.id_denunciante,
       folio: this.folio,
-      nombre: this.nombre,
+      nombre: this.name,
       apellido_paterno: this.apellidoPaterno,
       apellido_materno: this.apellidoMaterno,
       fecha_nacimiento: this.fecha_nacimiento,
@@ -142,7 +147,7 @@ export class Form1Page implements OnInit {
       no_interior: this.no_interior,
       tel_celular: this.tel_celular,
       tel_fijo: this.tel_fijo,
-      es_victima: this.es_victima,
+      es_victima: this.selectedOption,
     };
     
   
@@ -151,13 +156,14 @@ export class Form1Page implements OnInit {
       .then((response) => {
         // Maneja la respuesta exitosa de la inserción en la base de datos
         console.log('Datos guardados exitosamente:', response.data);
-        // Puedes realizar acciones adicionales aquí, como mostrar un mensaje de éxito o redireccionar a otra página
+        this.siguiente();
       })
       .catch((error) => {
         // Maneja el error en caso de que la inserción falle
         console.error('Error al guardar los datos:', error);
         // Puedes mostrar un mensaje de error al usuario o realizar acciones adicionales según tus necesidades
       });
+
     }
 
 }

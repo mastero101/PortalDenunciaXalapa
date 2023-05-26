@@ -31,14 +31,24 @@
     <ion-card>
       <p style="margin-left: 2em;">Datos del denunciante</p>
     </ion-card>
-    <ion-input name="nombre" type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
-    <ion-input name="apellidoPaterno" type="text" placeholder="Apellido Paterno"></ion-input>
-    <ion-input name="apellidoMaterno" type="text" placeholder="Materno"></ion-input>
+    <ion-input [(ngModel)]="name" type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
+    <ion-input [(ngModel)]="apellidoPaterno"  name="apellidoPaterno" type="text" placeholder="Apellido Paterno"></ion-input>
+    <ion-input [(ngModel)]="apellidoMaterno"  name="apellidoMaterno" type="text" placeholder="Apellido Materno"></ion-input>
     <ion-label style="margin-left: 2em;">Fecha de nacimiento</ion-label>
-    <ion-input name="fechaNacimiento" type="date" placeholder="Fecha de nacimiento"></ion-input>
-    <ion-input name="genero" type="text" placeholder="Genero"></ion-input>
-    <ion-input name="escolaridad" type="text" placeholder="Escolaridad"></ion-input>
-    <ion-input name="correoElectronico" type="email" placeholder="Correo Electronico"></ion-input>
+    <ion-input [(ngModel)]="fecha_nacimiento" name="fechaNacimiento" type="date" placeholder="Fecha de nacimiento"></ion-input>
+    <ion-select [(ngModel)]="genero" interface="popover" type="text" placeholder="Genero">
+      <ion-select-option value="Masculino">Masculino</ion-select-option>
+      <ion-select-option value="Femenino">Femenino</ion-select-option>
+      <ion-select-option value="Otro">Otro</ion-select-option>
+    </ion-select>
+    <ion-select [(ngModel)]="escolaridad" interface="popover" type="text" placeholder="Escolaridad">
+      <ion-select-option value="Primaria">Primaria</ion-select-option>
+      <ion-select-option value="Secundaria">Secundaria</ion-select-option>
+      <ion-select-option value="Preparatoria">Preparatoria</ion-select-option>
+      <ion-select-option value="Licenciatura">Licenciatura</ion-select-option>
+      <ion-select-option value="Posgrado">Posgrado</ion-select-option>
+    </ion-select>
+    <ion-input [(ngModel)]="correo_electronico" type="email" placeholder="Correo Electronico"></ion-input>
     <ion-card>
       <p style="margin-left: 2em;">Datos del domicilio</p>
     </ion-card>
@@ -48,21 +58,21 @@
     <ion-select interface="popover" type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio">
       <ion-select-option *ngFor="let municipio of municipios[selectedEstado]" [value]="municipio">{{ municipio }}</ion-select-option>
     </ion-select>
-    <ion-input name="colonia" type="text" placeholder="Colonia"></ion-input>
-    <ion-input name="codigoPostal" type="number" placeholder="C.P"></ion-input>
-    <ion-input name="calle" type="text" placeholder="Calle"></ion-input>
-    <ion-input name="noexterior" type="number" placeholder="No exterior"></ion-input>
-    <ion-input name="nointerior" type="number" placeholder="No Interior"></ion-input>
-    <ion-input name="celular" type="number" placeholder="Tel Celular"></ion-input>
-    <ion-input name="fijo" type="number" placeholder="Tel Fijo"></ion-input>
+    <ion-input [(ngModel)]="colonia" type="text" placeholder="Colonia"></ion-input>
+    <ion-input [(ngModel)]="codigo_postal" type="number" placeholder="C.P"></ion-input>
+    <ion-input [(ngModel)]="calle" type="text" placeholder="Calle"></ion-input>
+    <ion-input [(ngModel)]="no_exterior" type="text" placeholder="No exterior"></ion-input>
+    <ion-input [(ngModel)]="no_interior" type="text" placeholder="No Interior"></ion-input>
+    <ion-input [(ngModel)]="tel_celular" type="number" placeholder="Tel Celular"></ion-input>
+    <ion-input [(ngModel)]="tel_fijo" type="number" placeholder="Tel Fijo"></ion-input>
     <ion-card>
       <p style="margin-left: 1em; font-size: 15px; ">El denunciante tambien se considera victima y ofendido (a)</p>
     </ion-card>
     <ion-segment [(ngModel)]="selectedOption">
-      <ion-segment-button value="si">
+      <ion-segment-button value="Si">
         <ion-label>Sí</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="no">
+      <ion-segment-button value="No">
         <ion-label>No</ion-label>
       </ion-segment-button>
     </ion-segment>
