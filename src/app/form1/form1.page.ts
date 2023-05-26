@@ -147,7 +147,7 @@ export class Form1Page implements OnInit {
     
   
     // Realiza la solicitud POST utilizando Axios
-    axios.post('http://localhost:3000/victimas', data)
+    axios.post('http://20.172.167.237:3000/victimas', data)
       .then((response) => {
         // Maneja la respuesta exitosa de la inserción en la base de datos
         console.log('Datos guardados exitosamente:', response.data);
@@ -158,6 +158,6 @@ export class Form1Page implements OnInit {
         console.error('Error al guardar los datos:', error);
         // Puedes mostrar un mensaje de error al usuario o realizar acciones adicionales según tus necesidades
       });
-  }
+    }
 
 }
