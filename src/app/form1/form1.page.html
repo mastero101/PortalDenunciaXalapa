@@ -31,14 +31,14 @@
     <ion-card>
       <p style="margin-left: 2em;">Datos del denunciante</p>
     </ion-card>
-    <ion-input type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
-    <ion-input type="text" placeholder="Apellido Paterno"></ion-input>
-    <ion-input type="text" placeholder="Materno"></ion-input>
+    <ion-input name="nombre" type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
+    <ion-input name="apellidoPaterno" type="text" placeholder="Apellido Paterno"></ion-input>
+    <ion-input name="apellidoMaterno" type="text" placeholder="Materno"></ion-input>
     <ion-label style="margin-left: 2em;">Fecha de nacimiento</ion-label>
-    <ion-input type="date" placeholder="Fecha de nacimiento"></ion-input>
-    <ion-input type="text" placeholder="Genero"></ion-input>
-    <ion-input type="text" placeholder="Escolaridad"></ion-input>
-    <ion-input type="email" placeholder="Correo Electronico"></ion-input>
+    <ion-input name="fechaNacimiento" type="date" placeholder="Fecha de nacimiento"></ion-input>
+    <ion-input name="genero" type="text" placeholder="Genero"></ion-input>
+    <ion-input name="escolaridad" type="text" placeholder="Escolaridad"></ion-input>
+    <ion-input name="correoElectronico" type="email" placeholder="Correo Electronico"></ion-input>
     <ion-card>
       <p style="margin-left: 2em;">Datos del domicilio</p>
     </ion-card>
@@ -48,18 +48,18 @@
     <ion-select interface="popover" type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio">
       <ion-select-option *ngFor="let municipio of municipios[selectedEstado]" [value]="municipio">{{ municipio }}</ion-select-option>
     </ion-select>
-    <ion-input type="text" placeholder="Colonia"></ion-input>
-    <ion-input type="number" placeholder="C.P"></ion-input>
-    <ion-input type="text" placeholder="Calle"></ion-input>
-    <ion-input type="number" placeholder="No exterior"></ion-input>
-    <ion-input type="number" placeholder="No Interior"></ion-input>
-    <ion-input type="number" placeholder="Tel Celular"></ion-input>
-    <ion-input type="number" placeholder="Tel Fijo"></ion-input>
+    <ion-input name="colonia" type="text" placeholder="Colonia"></ion-input>
+    <ion-input name="codigoPostal" type="number" placeholder="C.P"></ion-input>
+    <ion-input name="calle" type="text" placeholder="Calle"></ion-input>
+    <ion-input name="noexterior" type="number" placeholder="No exterior"></ion-input>
+    <ion-input name="nointerior" type="number" placeholder="No Interior"></ion-input>
+    <ion-input name="celular" type="number" placeholder="Tel Celular"></ion-input>
+    <ion-input name="fijo" type="number" placeholder="Tel Fijo"></ion-input>
     <ion-card>
       <p style="margin-left: 1em; font-size: 15px; ">El denunciante tambien se considera victima y ofendido (a)</p>
     </ion-card>
     <ion-segment [(ngModel)]="selectedOption">
-      <ion-segment-button value="yes">
+      <ion-segment-button value="si">
         <ion-label>Sí</ion-label>
       </ion-segment-button>
       <ion-segment-button value="no">
@@ -110,7 +110,7 @@
           <td><ion-icon style="margin-left: 0.5em;" name="trash-outline" (click)="eliminar(persona)"></ion-icon></td>
         </tr>
       </table>
-      <ion-button style="margin-left: 9em; margin-bottom: 5em;" (click)="guardar()">Guardar</ion-button>
+      <ion-button style="margin-left: 9em; margin-bottom: 5em;" (click)="guardar2()">Guardar</ion-button>
     </ion-content>
     </ion-card>
   </ion-content>

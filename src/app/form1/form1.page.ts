@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import axios from 'axios';
 
 interface Persona {
   nombre: string;
   apellidoPaterno: string;
   apellidoMaterno: string;
 }
+
 
 @Component({
   selector: 'app-form1',
@@ -27,9 +29,26 @@ export class Form1Page implements OnInit {
   selectedMunicipio: string | null = null;
   selectedEstado2: string = '';
   selectedMunicipio2: string | null = null;
+   id_denunciante = 1;
+   folio = '123456';
+   name = 'Juan';
+   apellido_paterno = 'Pérez';
+   apellido_materno = 'Gómez';
+   fecha_nacimiento = '1990-05-10';
+   genero = 'Masculino';
+   escolaridad = 'Universidad';
+   correo_electronico = 'juan@example.com';
+   estado = 'Estado';
+   municipio = 'Municipio';
+   colonia = 'Colonia';
+   codigo_postal = '12345';
+   calle = 'Calle';
+   no_exterior = '123';
+   no_interior = 'A';
+   tel_celular = '555-123-4567';
+   tel_fijo = '555-987-6543';
+   es_victima = true;
   
-  
-
   constructor(private http: HttpClient, private router: Router) {
     this.selectedOption = '';
     this.loadData();
@@ -101,6 +120,44 @@ export class Form1Page implements OnInit {
 
   onEstadoChange() {
 
+  }
+
+  guardar2() {
+    const data = {
+      id_denunciante: this.id_denunciante,
+      folio: this.folio,
+      nombre: this.nombre,
+      apellido_paterno: this.apellidoPaterno,
+      apellido_materno: this.apellidoMaterno,
+      fecha_nacimiento: this.fecha_nacimiento,
+      genero: this.genero,
+      escolaridad: this.escolaridad,
+      correo_electronico: this.correo_electronico,
+      estado: this.selectedEstado,
+      municipio: this.selectedMunicipio,
+      colonia: this.colonia,
+      codigo_postal: this.codigo_postal,
+      calle: this.calle,
+      no_exterior: this.no_exterior,
+      no_interior: this.no_interior,
+      tel_celular: this.tel_celular,
+      tel_fijo: this.tel_fijo,
+      es_victima: this.es_victima,
+    };
+    
+  
+    // Realiza la solicitud POST utilizando Axios
+    axios.post('http://localhost:3000/victimas', data)
+      .then((response) => {
+        // Maneja la respuesta exitosa de la inserción en la base de datos
+        console.log('Datos guardados exitosamente:', response.data);
+        // Puedes realizar acciones adicionales aquí, como mostrar un mensaje de éxito o redireccionar a otra página
+      })
+      .catch((error) => {
+        // Maneja el error en caso de que la inserción falle
+        console.error('Error al guardar los datos:', error);
+        // Puedes mostrar un mensaje de error al usuario o realizar acciones adicionales según tus necesidades
+      });
   }
 
 }
