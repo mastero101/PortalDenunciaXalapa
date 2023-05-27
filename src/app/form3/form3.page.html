@@ -40,17 +40,17 @@
     <ion-card style="height: 102em;">
       <ion-card><p style="text-align:center;">Probable responsable de los hechos con apariencia de delito</p></ion-card>
       <p>Datos del probable responsable</p>
-      <ion-input type="text" placeholder="Nombre (s)"></ion-input>
-      <ion-input type="text" placeholder="Apellido Paterno"></ion-input>
-      <ion-input type="text" placeholder="Apellido Materno"></ion-input>
+      <ion-input [(ngModel)]="nombre_probable_responsable" type="text" placeholder="Nombre (s)"></ion-input>
+      <ion-input [(ngModel)]="apellido_paterno" type="text" placeholder="Apellido Paterno"></ion-input>
+      <ion-input [(ngModel)]="apellido_materno" type="text" placeholder="Apellido Materno"></ion-input>
       <p>Fecha de Nacimiento</p>
-      <ion-input type="date" placeholder="Fecha"></ion-input>
-      <ion-select interface="popover" type="text" placeholder="Genero">
+      <ion-input [(ngModel)]="fecha_nacimiento" type="date" placeholder="Fecha"></ion-input>
+      <ion-select [(ngModel)]="genero" interface="popover" type="text" placeholder="Genero">
         <ion-select-option value="Masculino">Masculino</ion-select-option>
         <ion-select-option value="Femenino">Femenino</ion-select-option>
         <ion-select-option value="Otro">Otro</ion-select-option>
       </ion-select>
-      <ion-input type="text" placeholder="Alias"></ion-input>
+      <ion-input [(ngModel)]="alias" type="text" placeholder="Alias"></ion-input>
       <p>Datos del domicilio</p>
       <ion-select interface="popover" type="text" placeholder="Estado" [(ngModel)]="selectedEstado3">
         <ion-select-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
@@ -58,40 +58,40 @@
       <ion-select interface="popover" type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio3">
         <ion-select-option *ngFor="let municipio of municipios[selectedEstado3]" [value]="municipio">{{ municipio }}</ion-select-option>
       </ion-select>
-      <ion-input type="text" placeholder="Colonia"></ion-input>
-      <ion-input type="text" placeholder="Calle"></ion-input>
-      <ion-input type="text" placeholder="No Exterior"></ion-input>
-      <ion-input type="text" placeholder="No Interior"></ion-input>
+      <ion-input [(ngModel)]="colonia_domicilio" type="text" placeholder="Colonia"></ion-input>
+      <ion-input [(ngModel)]="calle_domicilio" type="text" placeholder="Calle"></ion-input>
+      <ion-input [(ngModel)]="no_exterior_domicilio" type="text" placeholder="No Exterior"></ion-input>
+      <ion-input [(ngModel)]="no_interior_domicilio" type="text" placeholder="No Interior"></ion-input>
       <p>Señas Particulares</p>
-      <ion-select interface="popover" type="text" placeholder="Color de Piel">
+      <ion-select [(ngModel)]="color_piel" interface="popover" type="text" placeholder="Color de Piel">
         <ion-select-option value="Blanco">Blanco</ion-select-option>
         <ion-select-option value="Negro">Negro</ion-select-option>
         <ion-select-option value="Moreno">Moreno</ion-select-option>
       </ion-select>
-      <ion-select interface="popover" type="text" placeholder="Color de Ojos">
+      <ion-select [(ngModel)]="color_cabello" interface="popover" type="text" placeholder="Color de Ojos">
         <ion-select-option value="Marron">Marron</ion-select-option>
         <ion-select-option value="Azul">Azul</ion-select-option>
         <ion-select-option value="Verde">Verde</ion-select-option>
         <ion-select-option value="Miel">Miel</ion-select-option>
       </ion-select>
-      <ion-select interface="popover" type="text" placeholder="Tipo de Cabello">
+      <ion-select [(ngModel)]="tipo_cabello" interface="popover" type="text" placeholder="Tipo de Cabello">
         <ion-select-option value="Rizado">Lacio</ion-select-option>
         <ion-select-option value="Ondulado">Ondulado</ion-select-option>
         <ion-select-option value="Rizado">Rizado</ion-select-option>
         <ion-select-option value="Crespo">Crespo</ion-select-option>
       </ion-select>
-      <ion-select interface="popover" type="text" placeholder="Color de Cabello">
+      <ion-select [(ngModel)]="color_cabello" interface="popover" type="text" placeholder="Color de Cabello">
         <ion-select-option value="Negro">Negro</ion-select-option>
         <ion-select-option value="Castaño">Castaño</ion-select-option>
         <ion-select-option value="rubio">Rubio</ion-select-option>
         <ion-select-option value="Pelirrojo">Pelirrojo</ion-select-option>
       </ion-select>
-      <ion-select interface="popover" type="text" placeholder="Complexion">
+      <ion-select [(ngModel)]="complexion" interface="popover" type="text" placeholder="Complexion">
         <ion-select-option value="Robusta">Robusta</ion-select-option>
         <ion-select-option value="Delgada">Delgada</ion-select-option>
         <ion-select-option value="Obesa">Obesa</ion-select-option>
       </ion-select>
-      <ion-select interface="popover" type="text" placeholder="Tiene tatuajes">
+      <ion-select [(ngModel)]="tatuajes" interface="popover" type="text" placeholder="Tiene tatuajes">
         <ion-select-option value="Si">Si</ion-select-option>
         <ion-select-option value="No">No</ion-select-option>
       </ion-select>
@@ -111,7 +111,7 @@
     <ion-checkbox style="font-size: 11px; margin-left: 1.5em;" (ionChange)="toggleFormFields2($event)"></ion-checkbox>
     <div *ngIf="showFormFields2">
       <ion-card>
-        <ion-select class="custom-select" interface="popover" placeholder="Seleccione el delito correspondiente a los hechos">
+        <ion-select [(ngModel)]="tipo_delito" class="custom-select" interface="popover" placeholder="Seleccione el delito correspondiente a los hechos">
           <ion-select-option value="Abuso de Confianza">Abuso de Confianza</ion-select-option>
           <ion-select-option value="Abuso Sexual">Abuso Sexual</ion-select-option>
           <ion-select-option value="Allanamiento de Morada">Allanamiento de Morada</ion-select-option>
@@ -145,28 +145,28 @@
     </ion-card>
       <p>¿Sufrió algún tipo de daño?</p>
       <ion-segment [(ngModel)]="selectedOption">
-        <ion-segment-button value="yes">
+        <ion-segment-button value="Si">
           <ion-label>Sí</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="no">
+        <ion-segment-button value="No">
           <ion-label>No</ion-label>
         </ion-segment-button>
       </ion-segment>
       <p>¿Hubo testigos en el lugar?</p>
       <ion-segment [(ngModel)]="selectedOption2">
-        <ion-segment-button value="yes">
+        <ion-segment-button value="Si">
           <ion-label>Sí</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="no">
+        <ion-segment-button value="No">
           <ion-label>No</ion-label>
         </ion-segment-button>
       </ion-segment>
       <p>¿Llamó a un numero de emergencia</p>
       <ion-segment [(ngModel)]="selectedOption3">
-        <ion-segment-button value="yes">
+        <ion-segment-button value="Si">
           <ion-label>Sí</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="no">
+        <ion-segment-button value="No">
           <ion-label>No</ion-label>
         </ion-segment-button>
       </ion-segment>
@@ -174,16 +174,16 @@
           <p>Relate los hechos a detalle</p>
         </ion-card>
       <ion-card style="height: 40em;">
-        <ion-textarea style="height: 40em;" placeholder=""></ion-textarea>
+        <ion-textarea [(ngModel)]="detalles_hechos" style="height: 40em;" placeholder=""></ion-textarea>
       </ion-card>
       <ion-content style="height: 20em;">
         <ion-card>
           <p>Seleccione la Unidad de Investigación más cercana para el seguimiento de su denuncia</p>
         </ion-card>
-        <ion-select interface="popover" type="text" placeholder="Unidad de Investigación" style="margin-left: 1em;">
+        <ion-select [(ngModel)]="unidad_investigacion" interface="popover" type="text" placeholder="Unidad de Investigación" style="margin-left: 1em;">
           <ion-select-option value="Fiscalía General Del Estado De Veracruz" style="font-size: 5px;">Fiscalía General Del Estado De Veracruz</ion-select-option>
         </ion-select>
-        <ion-button style="margin-left: 9.5em;" (click)="enviar()">Enviar</ion-button>
+        <ion-button style="margin-left: 9.5em;" (click)="guardar2()">Enviar</ion-button>
       </ion-content>
   </ion-content>
 

@@ -34,9 +34,9 @@
       <p style="margin-left: 0.5em; font-size: 14px;">¿Cuando Sucedio el hecho con aparencia de delito?</p>
     </ion-card>
     <p style="margin-left: 2em;">Fecha</p>
-    <ion-input type="date"></ion-input>
+    <ion-input [(ngModel)]="fecha" type="date"></ion-input>
     <p style="margin-left: 2em;">Hora</p>
-    <ion-input type="time"></ion-input>
+    <ion-input [(ngModel)]="hora" type="time"></ion-input>
     <p></p>
     <ion-card>
       <p style="margin-left: 0.5em; font-size: 14px;">Datos del Domicilio</p>
@@ -48,11 +48,11 @@
       <ion-select-option *ngFor="let municipio of municipios[selectedEstado]" [value]="municipio">{{ municipio }}</ion-select-option>
     </ion-select>
 
-    <ion-input type="text" placeholder="Colonia"></ion-input>
-    <ion-input type="number" placeholder="C.P"></ion-input>
-    <ion-input type="text" placeholder="Calle"></ion-input>
-    <ion-input type="number" placeholder="No Exterior"></ion-input>
-    <ion-input type="number" placeholder="No Interior"></ion-input>
-      <ion-button style="margin-left: 9em;" (click)="guardar()">Guardar</ion-button>
+    <ion-input [(ngModel)]="colonia" type="text" placeholder="Colonia"></ion-input>
+    <ion-input [(ngModel)]="codigo_postal" type="number" placeholder="C.P"></ion-input>
+    <ion-input [(ngModel)]="calle" type="text" placeholder="Calle"></ion-input>
+    <ion-input [(ngModel)]="no_exterior" type="number" placeholder="No Exterior"></ion-input>
+    <ion-input [(ngModel)]="no_interior" type="number" placeholder="No Interior"></ion-input>
+      <ion-button style="margin-left: 9em;" (click)="guardar2()">Guardar</ion-button>
     </ion-content>
   </ion-content>

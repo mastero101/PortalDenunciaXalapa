@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+import axios from 'axios';
+
 @Component({
   selector: 'app-form2',
   templateUrl: './form2.page.html',
@@ -9,15 +11,29 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Form2Page implements OnInit {
   selectedTab: string = 'tab2';
+  folio = this.generarFolio();
   estados: string[] = [];
   municipios: { [estado: string]: string[] } = {};
   selectedEstado: string = '';
   selectedMunicipio: string | null = null;
+  fecha: string = '';
+  hora: string = '';
+  colonia: string = '';
+  codigo_postal: string = '';
+  calle: string = '';
+  no_interior: string = '';
+  no_exterior: string = '';
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.loadData();
+  }
+
+  generarFolio() {
+    var folio = Math.floor(Math.random() * 900000) + 100000;
+    console.log("Folio: " + folio);
+    return folio;
   }
 
   onTabChange(event: any) {
@@ -30,10 +46,7 @@ export class Form2Page implements OnInit {
     this.router.navigateByUrl('' + tab); // Reemplaza '/form1/' por la ruta correspondiente a tu vista dentro de form1
   }
 
-  guardar() {
-    this.router.navigateByUrl('/form3');
-  }
-
+  
   loadData() {
     this.http.get<any>('../../assets/estados-municipios.json').subscribe(
       (data) => {
@@ -43,11 +56,45 @@ export class Form2Page implements OnInit {
       (error) => {
         console.log('Error al cargar los datos del archivo JSON', error);
       }
-    );
+      );
+    }
+    
+  siguiente() {
+    this.router.navigateByUrl('/form3');
   }
 
   onEstadoChange() {
     this.selectedMunicipio = null;
   }
+
+  guardar2() {
+    const data = {
+      folio: this.folio,
+      fecha_hecho: this.fecha,
+      hora_hecho: this.hora,
+      estado_hecho: this.selectedEstado,
+      municipio_hecho: this.selectedMunicipio,
+      colonia_hecho: this.colonia,
+      codigo_postal_hecho: this.codigo_postal,
+      calle_hecho: this.calle,
+      no_exterior_hecho: this.no_exterior,
+      no_interior_hecho: this.no_interior,
+    };
+    
+  
+    // Realiza la solicitud POST utilizando Axios
+    axios.post('http://20.172.167.237:3000/domicilios', data)
+      .then((response) => {
+        // Maneja la respuesta exitosa de la inserción en la base de datos
+        console.log('Datos guardados exitosamente:', response.data);
+        this.siguiente();
+      })
+      .catch((error) => {
+        // Maneja el error en caso de que la inserción falle
+        console.error('Error al guardar los datos:', error);
+        // Puedes mostrar un mensaje de error al usuario o realizar acciones adicionales según tus necesidades
+      });
+
+    }
 
 }
