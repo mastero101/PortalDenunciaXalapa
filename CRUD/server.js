@@ -46,6 +46,28 @@ app.get("/victimas", (req, res) => {
   });
 });
 
+app.get("/domicilios", (req, res) => {
+  connection.query("SELECT * FROM domicilio", (error, results) => {
+    if (error) {
+      console.error("Error al obtener las víctimas", error);
+      res.status(500).json({ error: "Error al obtener las víctimas" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+app.get("/informes", (req, res) => {
+  connection.query("SELECT * FROM informe", (error, results) => {
+    if (error) {
+      console.error("Error al obtener las víctimas", error);
+      res.status(500).json({ error: "Error al obtener las víctimas" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 // Ruta para crear una nueva víctima
 app.post('/victimas', (req, res) => {
   const { id_denunciante, folio, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, genero, escolaridad, correo_electronico, estado, municipio, colonia, codigo_postal, calle, no_exterior, no_interior, tel_celular, tel_fijo, es_victima } = req.body;
