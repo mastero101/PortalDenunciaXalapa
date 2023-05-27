@@ -80,13 +80,71 @@ app.post('/domicilios', (req, res) => {
 
 // Ruta para crear un nuevo informe
 app.post('/informes', (req, res) => {
-  const { folio, nombre_probable_responsable, apellido_paterno, apellido_materno, fecha_nacimiento, genero, alias, estado_domicilio, municipio_domicilio, colonia_domicilio, calle_domicilio, no_exterior_domicilio, no_interior_domicilio, color_piel, color_ojos, tipo_cabello, color_cabello, complexion, tatuajes, estatura, tipo_delito, sufrio_danio, hubo_testigos, llamo_emergencia, detalles_hechos, unidad_investigacion } = req.body;
-  const query = `INSERT INTO informe (folio, nombre_probable_responsable, apellido_paterno, apellido_materno, fecha_nacimiento, genero, alias, estado_domicilio, municipio_domicilio, colonia_domicilio, calle_domicilio, no_exterior_domicilio, no_interior_domicilio, color_piel, color_ojos, tipo_cabello, color_cabello, complexion, tatuajes, estatura, tipo_delito, sufrio_danio, hubo_testigos, llamo_emergencia, detalles_hechos, unidad_investigacion)
+  const {
+    folio,
+    nombre_probable_responsable,
+    apellido_paterno,
+    apellido_materno,
+    fecha_nacimiento,
+    genero,
+    alias,
+    estado_domicilio,
+    municipio_domicilio,
+    colonia_domicilio,
+    calle_domicilio,
+    no_exterior_domicilio,
+    no_interior_domicilio,
+    color_piel,
+    color_ojos,
+    tipo_cabello,
+    color_cabello,
+    complexion,
+    tatuajes,
+    estatura,
+    tipo_delito,
+    sufrio_danio,
+    hubo_testigos,
+    llamo_emergencia,
+    detalles_hechos,
+    unidad_investigacion
+  } = req.body;
+
+  const query = `INSERT INTO informe 
+                 (folio, nombre_probable_responsable, apellido_paterno, apellido_materno, fecha_nacimiento, genero, alias, estado_domicilio, municipio_domicilio, colonia_domicilio, calle_domicilio, no_exterior_domicilio, no_interior_domicilio, color_piel, color_ojos, tipo_cabello, color_cabello, complexion, tatuajes, estatura, tipo_delito, sufrio_danio, hubo_testigos, llamo_emergencia, detalles_hechos, unidad_investigacion)
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-  const values = [folio, nombre_probable_responsable, apellido_paterno, apellido_materno, fecha_nacimiento, genero, alias, estado_domicilio, municipio_domicilio, colonia_domicilio, calle_domicilio, no_exterior_domicilio, no_interior_domicilio, color_piel, color_ojos, tipo_cabello, color_cabello, complexion, tatuajes, estatura, tipo_delito, sufrio_danio, hubo_testigos, llamo_emergencia, detalles_hechos, unidad_investigacion];
+
+  const values = [
+    folio,
+    nombre_probable_responsable,
+    apellido_paterno,
+    apellido_materno,
+    fecha_nacimiento,
+    genero,
+    alias,
+    estado_domicilio,
+    municipio_domicilio,
+    colonia_domicilio,
+    calle_domicilio,
+    no_exterior_domicilio,
+    no_interior_domicilio,
+    color_piel,
+    color_ojos,
+    tipo_cabello,
+    color_cabello,
+    complexion,
+    tatuajes,
+    estatura,
+    tipo_delito,
+    sufrio_danio,
+    hubo_testigos,
+    llamo_emergencia,
+    detalles_hechos,
+    unidad_investigacion
+  ];
+
   connection.query(query, values, (error, result) => {
     if (error) {
-      console.error('Error al crear el informe', error);
+      console.error('Error al crear el informe:', error);
       res.status(500).json({ error: 'Error al crear el informe' });
     } else {
       res.json({ insertId: result.insertId });
