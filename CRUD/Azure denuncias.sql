@@ -18,7 +18,7 @@ CREATE TABLE victimas (
   no_interior VARCHAR(10),
   tel_celular VARCHAR(15),
   tel_fijo VARCHAR(15),
-  es_victima boolean
+  es_victima VARCHAR(15)
 );
 
 CREATE TABLE domicilio (
@@ -38,7 +38,6 @@ CREATE TABLE domicilio (
 CREATE TABLE informe (
   id SERIAL PRIMARY KEY,
   folio VARCHAR(255) UNIQUE,
-  identifica_caracteristicas BOOLEAN,
   nombre_probable_responsable VARCHAR(255),
   apellido_paterno VARCHAR(255),
   apellido_materno VARCHAR(255),
@@ -56,11 +55,12 @@ CREATE TABLE informe (
   tipo_cabello VARCHAR(255),
   color_cabello VARCHAR(255),
   complexion VARCHAR(255),
-  tatuajes BOOLEAN,
+  tatuajes VARCHAR(15),
   estatura FLOAT,
-  sufrio_danio BOOLEAN,
-  hubo_testigos BOOLEAN,
-  llamo_emergencia BOOLEAN,
+  tipo_delito VARCHAR(15),
+  sufrio_danio VARCHAR(15),
+  hubo_testigos VARCHAR(15),
+  llamo_emergencia VARCHAR(15),
   detalles_hechos TEXT,
   unidad_investigacion VARCHAR(255)
 );
@@ -83,10 +83,9 @@ INSERT INTO domicilio (folio, fecha_hecho, hora_hecho, estado_hecho, municipio_h
 VALUES ('FOLIO123', '2023-05-22', '12:30:00', 'Jalisco', 'Guadalajara', 'Centro', '44100', 'Calle Principal', '123', 'A');
 
 -- Insertar datos en la tabla "informe"
-INSERT INTO informe (folio, identifica_caracteristicas, nombre_probable_responsable, apellido_paterno, apellido_materno, fecha_nacimiento, genero, alias, estado_domicilio, municipio_domicilio, colonia_domicilio, calle_domicilio, no_exterior_domicilio, no_interior_domicilio, color_piel, color_ojos, tipo_cabello, color_cabello, complexion, tatuajes, estatura, sufrio_danio, hubo_testigos, llamo_emergencia, detalles_hechos, unidad_investigacion)
-VALUES ('FOLIO123', TRUE, 'Pedro', 'Gómez', 'López', '1992-03-15', 'Masculino', 'El Chino', 'Jalisco', 'Guadalajara', 'Colonia Centro', 'Calle Principal', '456', 'B', 'Morena', 'Café', 'Corto', 'Negro', 'Delgada', TRUE, 1.75, TRUE, TRUE, TRUE, 'Los hechos ocurrieron en la esquina de la calle...', 'UI-123');
-
+INSERT INTO informe (folio, nombre_probable_responsable, apellido_paterno, apellido_materno, fecha_nacimiento, genero, alias, estado_domicilio, municipio_domicilio, colonia_domicilio, calle_domicilio, no_exterior_domicilio, no_interior_domicilio, color_piel, color_ojos, tipo_cabello, color_cabello, complexion, tatuajes, estatura, tipo_delito, sufrio_danio, hubo_testigos, llamo_emergencia, detalles_hechos, unidad_investigacion)
+VALUES ('FOLIO123', 'Pedro', 'Gómez', 'López', '1992-03-15', 'Masculino', 'El Chino', 'Jalisco', 'Guadalajara', 'Colonia Centro', 'Calle Principal', '456', 'B', 'Morena', 'Café', 'Corto', 'Negro', 'Delgada', '1', 1.75, 'Robo', '1', '1', '1', 'Los hechos ocurrieron en la esquina de la calle...', 'UI-123');
 
 Drop Table victimas;
-Drop Table informe;
 Drop Table domicilio;
+Drop Table informe;
