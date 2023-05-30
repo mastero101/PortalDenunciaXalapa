@@ -1,6 +1,4 @@
 const express = require("express");
-const https = require("https");
-const fs = require("fs");
 const app = express();
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
@@ -12,10 +10,7 @@ const dbConfig = {
   password: "Alejandrof15",
   database: "denuncias",
   port: 3306, // El puerto por defecto de MySQL es 3306
-  ssl: {
-    cert: fs.readFileSync("/cert/cert.pem"),
-    key: fs.readFileSync("/cert/key.pem")
-  }
+  ssl: true
 };
 
 const connection = mysql.createConnection(dbConfig);
@@ -192,10 +187,7 @@ app.post('/informes', (req, res) => {
   });
 });
 
-// Crear el servidor HTTPS con el certificado
-const server = https.createServer(dbConfig.ssl, app);
-
 // Iniciar el servidor en el puerto 3000
-server.listen(3000, () => {
+app.listen(3000, () => {
   console.log("Servidor backend iniciado en el puerto 3000");
 });
