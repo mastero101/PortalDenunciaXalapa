@@ -68,6 +68,19 @@ app.get("/informes", (req, res) => {
   });
 });
 
+app.get("/folio", (req, res) => {
+  const query = "SELECT MAX(folio) AS max_folio FROM victimas";
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error("Error al obtener el último folio", error);
+      res.status(500).json({ error: "Error al obtener el último folio" });
+    } else {
+      const maxFolio = results[0].max_folio;
+      res.json({ maxFolio });
+    }
+  });
+});
+
 // Ruta para crear una nueva víctima
 app.post('/victimas', (req, res) => {
   const { id_denunciante, folio, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, genero, escolaridad, correo_electronico, estado, municipio, colonia, codigo_postal, calle, no_exterior, no_interior, tel_celular, tel_fijo, es_victima } = req.body;
