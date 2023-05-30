@@ -17,7 +17,7 @@ interface Persona {
 })
 export class Form1Page implements OnInit {
   selectedTab: string = 'tab1';
-  selectedOption: string;
+  selectedOption: string = '';
   showCard: boolean = false;
   nombres: Persona[] = [];
   nombre: string = '';
@@ -30,7 +30,7 @@ export class Form1Page implements OnInit {
   selectedEstado2: string = '';
   selectedMunicipio2: string | null = null;
    id_denunciante = 1;
-   folio = this.generarFolio();
+   folio: number = 0;
    name: string = '';
    apellido_paterno: string = '';
    apellido_materno: string = '';
@@ -46,6 +46,9 @@ export class Form1Page implements OnInit {
    tel_celular: string = '';
    tel_fijo: string = '';
    es_victima = true;
+   maxFolio: string = '';
+     apellidoPaterno2: string = '';
+     apellidoMaterno2: string = '';
   
   constructor(private http: HttpClient, private router: Router) {
     this.selectedOption = '';
@@ -53,12 +56,7 @@ export class Form1Page implements OnInit {
    }
 
   ngOnInit() {
-  }
-
-  generarFolio() {
-    var folio = Math.floor(Math.random() * 900000) + 100000;
-    console.log("Folio: " + folio);
-    return folio;
+    this.obtenerFolio();
   }
 
   onTabChange(event: any) {
@@ -70,6 +68,22 @@ export class Form1Page implements OnInit {
     this.selectedTab = 'tab1';
     this.router.navigateByUrl('' + tab); // Reemplaza '/form1/' por la ruta correspondiente a tu vista dentro de form1
   }
+
+  obtenerFolio() {
+    axios.get('http://20.172.167.237:3000/folio')
+      .then(response => {
+        this.maxFolio = response.data.maxFolio;
+        const ultimoNumero = Number(this.maxFolio);
+        const nuevoNumero = ultimoNumero + 1;
+        this.folio = nuevoNumero;
+        console.log('Ultimo Folio:', this.maxFolio);
+        console.log('Nuevo folio:', this.folio);
+      })
+      .catch(error => {
+        console.error('Error al obtener el último folio', error);
+      });
+  }
+  
 
   toggleCard() {
   this.showCard = !this.showCard;
@@ -149,8 +163,9 @@ export class Form1Page implements OnInit {
       tel_fijo: this.tel_fijo,
       es_victima: this.selectedOption,
     };
+
+    console.log(data)
     
-  
     // Realiza la solicitud POST utilizando Axios
     axios.post('http://20.172.167.237:3000/victimas', data)
       .then((response) => {

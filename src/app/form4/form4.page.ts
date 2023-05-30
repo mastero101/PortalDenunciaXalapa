@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import axios from 'axios';
+
 @Component({
   selector: 'app-form4',
   templateUrl: './form4.page.html',
@@ -12,11 +14,27 @@ export class Form4Page implements OnInit {
   ocultarElementos: boolean = false;
   mostrarFolio: boolean = false;
   mostrarElementos: boolean = false;
-  folio: number = 1;
+  folio: number = 0;
+  maxFolio: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.obtenerFolio();
+  }
 
   ngOnInit() {
+  }
+
+  obtenerFolio() {
+    axios.get('http://20.172.167.237:3000/folio')
+      .then(response => {
+        this.maxFolio = response.data.maxFolio;
+        const ultimoNumero = Number(this.maxFolio);
+        this.folio = ultimoNumero;
+        console.log('Ultimo Folio:', ultimoNumero);
+      })
+      .catch(error => {
+        console.error('Error al obtener el último folio', error);
+      });
   }
 
   onTabChange(event: any) {
@@ -53,6 +71,5 @@ export class Form4Page implements OnInit {
   verFolio(){
     this.mostrarFolio = true;
     this.mostrarElementos = true;
-    this.folio = 123456789;
   }
 }

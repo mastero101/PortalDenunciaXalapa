@@ -80,13 +80,23 @@
     <ion-content class="agregar" style="height: 15em;">
       <ion-button style="margin-left: 6.5em; margin-top: 2em; margin-bottom: 2em;" (click)="toggleCard()">Agregar Victima</ion-button>
       <ion-card *ngIf="showCard">
-        <ion-input [(ngModel)]="nombre" type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
-        <ion-input [(ngModel)]="apellidoPaterno" type="text" placeholder="Apellido Paterno"></ion-input>
-        <ion-input [(ngModel)]="apellidoMaterno" type="text" placeholder="Materno"></ion-input>
+        <ion-input type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
+        <ion-input type="text" placeholder="Apellido Paterno"></ion-input>
+        <ion-input type="text" placeholder="Materno"></ion-input>
         <ion-label style="margin-left: 2em;">Fecha de nacimiento</ion-label>
         <ion-input type="date" placeholder="Fecha de nacimiento"></ion-input>
-        <ion-input type="text" placeholder="Genero"></ion-input>
-        <ion-input type="text" placeholder="Escolaridad"></ion-input>
+        <ion-select interface="popover" type="text" placeholder="Genero">
+          <ion-select-option value="Masculino">Masculino</ion-select-option>
+          <ion-select-option value="Femenino">Femenino</ion-select-option>
+          <ion-select-option value="Otro">Otro</ion-select-option>
+        </ion-select>
+        <ion-select interface="popover" type="text" placeholder="Escolaridad">
+          <ion-select-option value="Primaria">Primaria</ion-select-option>
+          <ion-select-option value="Secundaria">Secundaria</ion-select-option>
+          <ion-select-option value="Preparatoria">Preparatoria</ion-select-option>
+          <ion-select-option value="Licenciatura">Licenciatura</ion-select-option>
+          <ion-select-option value="Posgrado">Posgrado</ion-select-option>
+        </ion-select>
         <ion-input type="email" placeholder="Correo Electronico"></ion-input>
         <ion-card>
           <p style="margin-left: 2em;">Datos del domicilio</p>

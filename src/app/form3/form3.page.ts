@@ -16,7 +16,7 @@ export class Form3Page implements OnInit {
   selectedOption3: string;
   showFormFields: boolean = false;
   showFormFields2: boolean = false;
-  folio = this.generarFolio();
+  folio: number = 0;
   estatura: number = 1.40;
   estados: string[] = [];
   municipios: { [estado: string]: string[] } = {};
@@ -44,22 +44,31 @@ export class Form3Page implements OnInit {
   llamo_emergencia: string = '';
   detalles_hechos: string = '';
   unidad_investigacion: string = '';
+  maxFolio: any;
 
 
   constructor(private http: HttpClient, private router: Router) {
     this.selectedOption = '';
     this.selectedOption2 = '';
     this.selectedOption3 = '';
+    this.obtenerFolio();
    }
 
   ngOnInit() {
     this.loadData();
   }
 
-  generarFolio() {
-    var folio = Math.floor(Math.random() * 900000) + 100000;
-    console.log("Folio: " + folio);
-    return folio;
+  obtenerFolio() {
+    axios.get('http://20.172.167.237:3000/folio')
+      .then(response => {
+        this.maxFolio = response.data.maxFolio;
+        const ultimoNumero = Number(this.maxFolio);
+        this.folio = ultimoNumero;
+        console.log('Ultimo Folio:', this.maxFolio);
+      })
+      .catch(error => {
+        console.error('Error al obtener el último folio', error);
+      });
   }
 
   onTabChange(event: any) {
