@@ -68,6 +68,17 @@ app.get("/informes", (req, res) => {
   });
 });
 
+app.get("/seguimiento", (req, res) => {
+  connection.query("SELECT * FROM seguimiento", (error, results) => {
+    if (error) {
+      console.error("Error al obtener las víctimas", error);
+      res.status(500).json({ error: "Error al obtener las víctimas" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 app.get("/folio", (req, res) => {
   const query = "SELECT MAX(folio) AS max_folio FROM victimas";
   connection.query(query, (error, results) => {
@@ -181,6 +192,22 @@ app.post('/informes', (req, res) => {
     if (error) {
       console.error('Error al crear el informe:', error);
       res.status(500).json({ error: 'Error al crear el informe' });
+    } else {
+      res.json({ insertId: result.insertId });
+    }
+  });
+});
+
+// Ruta para crear un nuevo seguimiento
+app.post('/seguimiento', (req, res) => {
+  const { folio, estado, seguimiento } = req.body;
+  const query = `INSERT INTO seguimiento (folio, estado, seguimiento)
+                 VALUES (?, ?, ? )`;
+  const values = [folio, estado, seguimiento ];
+  connection.query(query, values, (error, result) => {
+    if (error) {
+      console.error('Error al crear seguimiento', error);
+      res.status(500).json({ error: 'Error al crear seguimiento' });
     } else {
       res.json({ insertId: result.insertId });
     }
