@@ -3,7 +3,6 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
     </ion-buttons>
-    <ion-title>Form 1</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -80,24 +79,24 @@
     <ion-content class="agregar" style="height: 15em;">
       <ion-button style="margin-left: 6.5em; margin-top: 2em; margin-bottom: 2em;" (click)="toggleCard()">Agregar Victima</ion-button>
       <ion-card *ngIf="showCard">
-        <ion-input type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
-        <ion-input type="text" placeholder="Apellido Paterno"></ion-input>
-        <ion-input type="text" placeholder="Materno"></ion-input>
+        <ion-input [(ngModel)]="name2" type="text" placeholder="Nombre" style="margin-top: 1em;"></ion-input>
+        <ion-input [(ngModel)]="apellido_paterno2" type="text" placeholder="Apellido Paterno"></ion-input>
+        <ion-input [(ngModel)]="apellido_materno2" type="text" placeholder="Materno"></ion-input>
         <ion-label style="margin-left: 2em;">Fecha de nacimiento</ion-label>
-        <ion-input type="date" placeholder="Fecha de nacimiento"></ion-input>
-        <ion-select interface="popover" type="text" placeholder="Genero">
+        <ion-input [(ngModel)]="fecha_nacimiento2" type="date" placeholder="Fecha de nacimiento"></ion-input>
+        <ion-select [(ngModel)]="genero2" interface="popover" type="text" placeholder="Genero">
           <ion-select-option value="Masculino">Masculino</ion-select-option>
           <ion-select-option value="Femenino">Femenino</ion-select-option>
           <ion-select-option value="Otro">Otro</ion-select-option>
         </ion-select>
-        <ion-select interface="popover" type="text" placeholder="Escolaridad">
+        <ion-select [(ngModel)]="escolaridad2" interface="popover" type="text" placeholder="Escolaridad">
           <ion-select-option value="Primaria">Primaria</ion-select-option>
           <ion-select-option value="Secundaria">Secundaria</ion-select-option>
           <ion-select-option value="Preparatoria">Preparatoria</ion-select-option>
           <ion-select-option value="Licenciatura">Licenciatura</ion-select-option>
           <ion-select-option value="Posgrado">Posgrado</ion-select-option>
         </ion-select>
-        <ion-input type="email" placeholder="Correo Electronico"></ion-input>
+        <ion-input [(ngModel)]="correo_electronico2" type="email" placeholder="Correo Electronico"></ion-input>
         <ion-card>
           <p style="margin-left: 2em;">Datos del domicilio</p>
         </ion-card>
@@ -107,13 +106,13 @@
         <ion-select interface="popover" type="text" placeholder="Municipio" [(ngModel)]="selectedMunicipio2">
           <ion-select-option *ngFor="let municipio of municipios[selectedEstado2]" [value]="municipio">{{ municipio }}</ion-select-option>
         </ion-select>
-        <ion-input type="text" placeholder="Colonia"></ion-input>
-        <ion-input type="number" placeholder="C.P"></ion-input>
-        <ion-input type="text" placeholder="Calle"></ion-input>
-        <ion-input type="number" placeholder="No exterior"></ion-input>
-        <ion-input type="number" placeholder="No Interior"></ion-input>
-        <ion-input type="number" placeholder="Tel Celular"></ion-input>
-        <ion-input type="number" placeholder="Tel Fijo"></ion-input>
+        <ion-input [(ngModel)]="colonia2" type="text" placeholder="Colonia"></ion-input>
+        <ion-input [(ngModel)]="codigo_postal2" type="number" placeholder="C.P"></ion-input>
+        <ion-input [(ngModel)]="calle2" type="text" placeholder="Calle"></ion-input>
+        <ion-input [(ngModel)]="no_exterior2" type="number" placeholder="No exterior"></ion-input>
+        <ion-input [(ngModel)]="no_interior2" type="number" placeholder="No Interior"></ion-input>
+        <ion-input [(ngModel)]="tel_celular2" type="number" placeholder="Tel Celular"></ion-input>
+        <ion-input [(ngModel)]="tel_fijo2" type="number" placeholder="Tel Fijo"></ion-input>
         <ion-button style="margin-left: 8em; margin-bottom: 1em;" (click)="agregar()">Agregar</ion-button>
       </ion-card>
       <table *ngIf="nombres.length > 0" style="margin-top: 1em; margin-left: 2em; margin-bottom: 2em;">
@@ -130,7 +129,7 @@
           <td><ion-icon style="margin-left: 0.5em;" name="trash-outline" (click)="eliminar(persona)"></ion-icon></td>
         </tr>
       </table>
-      <ion-button style="margin-left: 9em; margin-bottom: 5em;" (click)="guardar2()">Guardar</ion-button>
+      <ion-button style="margin-left: 9em; margin-bottom: 5em;" (click)="guardar()">Guardar</ion-button>
     </ion-content>
     </ion-card>
   </ion-content>

@@ -57,7 +57,7 @@ CREATE TABLE informe (
   complexion VARCHAR(255),
   tatuajes VARCHAR(15),
   estatura FLOAT,
-  tipo_delito VARCHAR(15),
+  tipo_delito VARCHAR(55),
   sufrio_danio VARCHAR(15),
   hubo_testigos VARCHAR(15),
   llamo_emergencia VARCHAR(15),
@@ -65,18 +65,28 @@ CREATE TABLE informe (
   unidad_investigacion VARCHAR(255)
 );
 
+CREATE TABLE seguimiento (
+  id SERIAL PRIMARY KEY,
+  folio VARCHAR(255) UNIQUE,
+  estado VARCHAR(255),
+  seguimiento varchar(255)
+);
+
 Select * from victimas;
 Select * from domicilio;
 Select * from informe;
-Select * from victimas,domicilio,informe;
+Select * from seguimiento;
 
 DELETE FROM victimas WHERE id = 1;
-DELETE FROM domicilio WHERE id = 2;
-DELETE FROM informe WHERE id = 2;
+DELETE FROM domicilio WHERE id = 1;
+DELETE FROM informe WHERE id = 1;
+DELETE FROM seguimiento WHERE id = 1;
+
+SELECT MAX(folio) AS max_folio FROM victimas;
 
 -- Insertar datos en la tabla "victimas"
 INSERT INTO victimas (id_denunciante, folio, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, genero, escolaridad, correo_electronico, estado, municipio, colonia, codigo_postal, calle, no_exterior, no_interior, tel_celular, tel_fijo, es_victima)
-VALUES (1, 'FOLIO123', 'María', 'López', 'García', '1990-05-10', 'Femenino', 'Universidad', 'maria@example.com', 'Jalisco', 'Guadalajara', 'Centro', '44100', 'Calle Principal', '123', 'A', '9876543210', 'NULL', TRUE);
+VALUES (1, '1', 'María', 'López', 'García', '1990-05-10', 'Femenino', 'Universidad', 'maria@example.com', 'Jalisco', 'Guadalajara', 'Centro', '44100', 'Calle Principal', '123', 'A', '9876543210', '9876543210', 'Si');
 
 -- Insertar datos en la tabla "domicilio"
 INSERT INTO domicilio (folio, fecha_hecho, hora_hecho, estado_hecho, municipio_hecho, colonia_hecho, codigo_postal_hecho, calle_hecho, no_exterior_hecho, no_interior_hecho)
@@ -89,3 +99,4 @@ VALUES ('FOLIO123', 'Pedro', 'Gómez', 'López', '1992-03-15', 'Masculino', 'El 
 Drop Table victimas;
 Drop Table domicilio;
 Drop Table informe;
+Drop Table seguimiento;

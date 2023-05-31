@@ -29,6 +29,8 @@ export class Form1Page implements OnInit {
   selectedMunicipio: string | null = null;
   selectedEstado2: string = '';
   selectedMunicipio2: string | null = null;
+  apellidoPaterno2: string = '';
+  apellidoMaterno2: string = '';
    id_denunciante = 1;
    folio: number = 0;
    name: string = '';
@@ -47,13 +49,27 @@ export class Form1Page implements OnInit {
    tel_fijo: string = '';
    es_victima = true;
    maxFolio: string = '';
-     apellidoPaterno2: string = '';
-     apellidoMaterno2: string = '';
+     id_denunciante2 = 1;
+     name2: string = '';
+     apellido_paterno2: string = '';
+     apellido_materno2: string = '';
+     fecha_nacimiento2: string = '';
+     genero2: string = '';
+     escolaridad2: string = '';
+     correo_electronico2: string = '';
+     colonia2: string = '';
+     codigo_postal2: string = '';
+     calle2: string = '';
+     no_exterior2: string = '';
+     no_interior2: string = '';
+     tel_celular2: string = '';
+     tel_fijo2: string = '';
+     es_victima2 = "Si";
   
   constructor(private http: HttpClient, private router: Router) {
     this.selectedOption = '';
     this.loadData();
-   }
+  }
 
   ngOnInit() {
     this.obtenerFolio();
@@ -95,22 +111,37 @@ export class Form1Page implements OnInit {
       // Modifica el estilo del elemento según tus necesidades
     }
   }
+  this.id_denunciante2 = this.id_denunciante2 + 1;
+  console.log(this.id_denunciante2);
   }
 
   agregar() {
-  if (this.nombre && this.apellidoPaterno && this.apellidoMaterno) {
-    const persona: Persona = {
-      nombre: this.nombre,
-      apellidoPaterno: this.apellidoPaterno,
-      apellidoMaterno: this.apellidoMaterno
-    };
-    
-    this.nombres.push(persona);
-    this.nombre = '';
-    this.apellidoPaterno = '';
-    this.apellidoMaterno = '';
-  }
-  this.showCard = false;  
+    if (this.name2 && this.apellido_paterno2 && this.apellido_materno2) {
+      const nuevoNombre = {
+        nombre: this.name2,
+        apellidoPaterno: this.apellido_paterno2,
+        apellidoMaterno: this.apellido_materno2
+      };
+      this.nombres.push(nuevoNombre);
+    }
+    this.showCard = false; 
+    this.guardar2();
+
+    // Restablecer los campos de entrada después de agregar un nombre
+    this.name2 = '';
+    this.apellido_paterno2 = '';
+    this.apellido_materno2 = '';
+    this.fecha_nacimiento2 = '';
+    this.genero2 = '';
+    this.escolaridad2 = '';
+    this.correo_electronico2 = '';
+    this.colonia2 = '';
+    this.codigo_postal2 = '';
+    this.calle2 = '';
+    this.no_exterior2 = '';
+    this.no_interior2 = '';
+    this.tel_celular2 = '';
+    this.tel_fijo2 = '';
   }
 
   eliminar(persona: Persona) {
@@ -131,7 +162,7 @@ export class Form1Page implements OnInit {
         console.log('Error al cargar los datos del archivo JSON', error);
       }
       );
-    }
+  }
     
     onEstadoChange() {
       
@@ -141,7 +172,7 @@ export class Form1Page implements OnInit {
       this.router.navigateByUrl('/form2');
   }
 
-  guardar2() {
+  guardar() {
     const data = {
       id_denunciante: this.id_denunciante,
       folio: this.folio,
@@ -179,6 +210,45 @@ export class Form1Page implements OnInit {
         // Puedes mostrar un mensaje de error al usuario o realizar acciones adicionales según tus necesidades
       });
 
-    }
+  }
+
+  guardar2() {
+    const data2 = {
+      id_denunciante: this.id_denunciante2,
+      folio: this.folio,
+      nombre: this.name2,
+      apellido_paterno: this.apellido_paterno2,
+      apellido_materno: this.apellido_materno2,
+      fecha_nacimiento: this.fecha_nacimiento2,
+      genero: this.genero2,
+      escolaridad: this.escolaridad2,
+      correo_electronico: this.correo_electronico2,
+      estado: this.selectedEstado2,
+      municipio: this.selectedMunicipio2,
+      colonia: this.colonia2,
+      codigo_postal: this.codigo_postal2,
+      calle: this.calle2,
+      no_exterior: this.no_exterior2,
+      no_interior: this.no_interior2,
+      tel_celular: this.tel_celular2,
+      tel_fijo: this.tel_fijo2,
+      es_victima: this.es_victima2,
+    };
+
+    console.log(data2)
+    
+    // Realiza la solicitud POST utilizando Axios
+    axios.post('http://20.172.167.237:3000/victimas', data2)
+      .then((response) => {
+        // Maneja la respuesta exitosa de la inserción en la base de datos
+        console.log('Datos guardados exitosamente:', response.data);
+      })
+      .catch((error) => {
+        // Maneja el error en caso de que la inserción falle
+        console.error('Error al guardar los datos:', error);
+        // Puedes mostrar un mensaje de error al usuario o realizar acciones adicionales según tus necesidades
+      });
+
+  }
 
 }
