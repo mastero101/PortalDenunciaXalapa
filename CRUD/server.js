@@ -92,6 +92,27 @@ app.get("/folio", (req, res) => {
   });
 });
 
+// Ruta para obtener estado del folio
+app.get("/estado/:folio", (req, res) => {
+  const folio = req.params.folio;
+  const query = "SELECT * FROM seguimiento WHERE folio = ?";
+  const values = [folio];
+
+  connection.query(query, values, (error, results) => {
+    if (error) {
+      console.error("Error al obtener valores por folio", error);
+      res.status(500).json({ error: "Error al obtener valores por folio" });
+    } else {
+      if (results.length > 0) {
+        const valores = results[0];
+        res.json(valores);
+      } else {
+        res.json(null);
+      }
+    }
+  });
+});
+
 // Ruta para crear una nueva víctima
 app.post('/victimas', (req, res) => {
   const { id_denunciante, folio, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, genero, escolaridad, correo_electronico, estado, municipio, colonia, codigo_postal, calle, no_exterior, no_interior, tel_celular, tel_fijo, es_victima } = req.body;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -8,15 +9,26 @@ import { Router } from '@angular/router';
 })
 export class Tab2Page {
   captchaVerified: boolean = false;
+  folio_input: string = "";
 
-  constructor(private router: Router) {}
+  constructor(private platform: Platform, private router: Router) {}
 
-  buscar(){
+  buscar() {
     if (this.captchaVerified) {
-      console.log("Captcha Works");
+      console.log('Captcha Works');
+
+      // Almacenar el valor en localStorage
+      this.platform.ready().then(() => {
+        window.localStorage.setItem('folio_input', this.folio_input);
+      });
+
       this.router.navigate(['/tabs/tab3']);
     } else {
-      console.log("Captcha verification failed");
+      console.log('Captcha verification failed');
+      console.log(this.folio_input);
+      this.platform.ready().then(() => {
+        window.localStorage.setItem('folio_input', this.folio_input);
+      });
     }
   }
   
