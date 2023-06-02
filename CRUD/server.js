@@ -239,8 +239,8 @@ app.post('/seguimiento', (req, res) => {
 
 // Opciones de configuración del servidor HTTPS
 const httpsOptions = {
-  cert: fs.readFileSync("/cert.csr"),
-  key: fs.readFileSync("/cert.key")
+  cert: fs.readFileSync("cert.csr"),
+  key: fs.readFileSync("cert.key")
 };
 
 // Crear el servidor HTTPS
