@@ -68,6 +68,17 @@ app.get("/informes", (req, res) => {
   });
 });
 
+app.get("/seguimiento", (req, res) => {
+  connection.query("SELECT * FROM seguimiento", (error, results) => {
+    if (error) {
+      console.error("Error al obtener las víctimas", error);
+      res.status(500).json({ error: "Error al obtener las víctimas" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 app.get("/folio", (req, res) => {
   const query = "SELECT MAX(folio) AS max_folio FROM victimas";
   connection.query(query, (error, results) => {
@@ -77,6 +88,27 @@ app.get("/folio", (req, res) => {
     } else {
       const maxFolio = results[0].max_folio;
       res.json({ maxFolio });
+    }
+  });
+});
+
+// Ruta para obtener estado del folio
+app.get("/estado/:folio", (req, res) => {
+  const folio = req.params.folio;
+  const query = "SELECT * FROM seguimiento WHERE folio = ?";
+  const values = [folio];
+
+  connection.query(query, values, (error, results) => {
+    if (error) {
+      console.error("Error al obtener valores por folio", error);
+      res.status(500).json({ error: "Error al obtener valores por folio" });
+    } else {
+      if (results.length > 0) {
+        const valores = results[0];
+        res.json(valores);
+      } else {
+        res.json(null);
+      }
     }
   });
 });
@@ -181,6 +213,22 @@ app.post('/informes', (req, res) => {
     if (error) {
       console.error('Error al crear el informe:', error);
       res.status(500).json({ error: 'Error al crear el informe' });
+    } else {
+      res.json({ insertId: result.insertId });
+    }
+  });
+});
+
+// Ruta para crear un nuevo seguimiento
+app.post('/seguimiento', (req, res) => {
+  const { folio, estado, seguimiento } = req.body;
+  const query = `INSERT INTO seguimiento (folio, estado, seguimiento)
+                 VALUES (?, ?, ? )`;
+  const values = [folio, estado, seguimiento ];
+  connection.query(query, values, (error, result) => {
+    if (error) {
+      console.error('Error al crear seguimiento', error);
+      res.status(500).json({ error: 'Error al crear seguimiento' });
     } else {
       res.json({ insertId: result.insertId });
     }

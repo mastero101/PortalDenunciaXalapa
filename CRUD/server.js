@@ -1,4 +1,6 @@
 const express = require("express");
+const https = require("https");
+const fs = require("fs");
 const app = express();
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
@@ -14,6 +16,11 @@ const dbConfig = {
 };
 
 const connection = mysql.createConnection(dbConfig);
+
+const options = {
+  key: fs.readFileSync("/cert.key"),
+  cert: fs.readFileSync("/cert.cert")
+};
 
 // Enable CORS for all routes
 app.use((req, res, next) => {
@@ -235,7 +242,10 @@ app.post('/seguimiento', (req, res) => {
   });
 });
 
+// Crear el servidor HTTPS
+const server = https.createServer(options, app);
+
 // Iniciar el servidor en el puerto 3000
-app.listen(3000, () => {
-  console.log("Servidor backend iniciado en el puerto 3000");
+server.listen(3000, () => {
+  console.log("Servidor backend iniciado en el puerto 3000 (HTTPS)");
 });
