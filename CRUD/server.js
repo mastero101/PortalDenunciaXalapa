@@ -17,11 +17,6 @@ const dbConfig = {
 
 const connection = mysql.createConnection(dbConfig);
 
-const options = {
-  key: fs.readFileSync("/cert.key"),
-  cert: fs.readFileSync("/cert.cert")
-};
-
 // Enable CORS for all routes
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -242,8 +237,14 @@ app.post('/seguimiento', (req, res) => {
   });
 });
 
+// Opciones de configuración del servidor HTTPS
+const httpsOptions = {
+  cert: fs.readFileSync("/cert.csr"),
+  key: fs.readFileSync("/cert.key")
+};
+
 // Crear el servidor HTTPS
-const server = https.createServer(options, app);
+const server = https.createServer(httpsOptions, app);
 
 // Iniciar el servidor en el puerto 3000
 server.listen(3000, () => {
