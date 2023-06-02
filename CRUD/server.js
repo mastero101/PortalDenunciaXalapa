@@ -1,6 +1,4 @@
 const express = require("express");
-const https = require("https");
-const fs = require("fs");
 const app = express();
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
@@ -237,16 +235,7 @@ app.post('/seguimiento', (req, res) => {
   });
 });
 
-// Opciones de configuración del servidor HTTPS
-const httpsOptions = {
-  cert: fs.readFileSync("cert.pem"),
-  key: fs.readFileSync("key.pem")
-};
-
-// Crear el servidor HTTPS
-const server = https.createServer(httpsOptions, app);
-
 // Iniciar el servidor en el puerto 3000
-server.listen(3000, () => {
-  console.log("Servidor backend iniciado en el puerto 3000 (HTTPS)");
+app.listen(3000, () => {
+  console.log("Servidor backend iniciado en el puerto 3000");
 });
