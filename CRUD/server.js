@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const https = require("https");
+const fs = require("fs");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
 
@@ -33,6 +35,14 @@ connection.connect((error) => {
 
 // Middleware para analizar el cuerpo de las solicitudes
 app.use(bodyParser.json());
+
+// Crear un servidor HTTPS con los certificados
+const options = {
+  cert: fs.readFileSync('/CRUD-NodeJS-MYSQL/fullchain.pem'),
+  key: fs.readFileSync('/CRUD-NodeJS-MYSQL/privkey.pem')
+};
+
+const server = https.createServer(options, app);
 
 // Ruta para obtener todas las víctimas
 app.get("/victimas", (req, res) => {
@@ -235,7 +245,7 @@ app.post('/seguimiento', (req, res) => {
   });
 });
 
-// Iniciar el servidor en el puerto 3000
-app.listen(3000, () => {
-  console.log("Servidor backend iniciado en el puerto 3000");
+// Iniciar el servidor en el puerto 3001
+server.listen(3001, () => {
+  console.log("Servidor backend iniciado en el puerto 3001");
 });
