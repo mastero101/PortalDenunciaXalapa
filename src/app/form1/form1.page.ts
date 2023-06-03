@@ -86,7 +86,7 @@ export class Form1Page implements OnInit {
   }
 
   obtenerFolio() {
-    axios.get('https://20.172.167.237:3000/folio')
+    axios.get('https://nodemysql12.duckdns.org:3001/folio')
       .then(response => {
         this.maxFolio = response.data.maxFolio;
         const ultimoNumero = Number(this.maxFolio);
@@ -198,7 +198,7 @@ export class Form1Page implements OnInit {
     console.log(data)
     
     // Realiza la solicitud POST utilizando Axios
-    axios.post('https://20.172.167.237:3000/victimas', data)
+    axios.post('https://nodemysql12.duckdns.org:3001/victimas', data)
       .then((response) => {
         // Maneja la respuesta exitosa de la inserción en la base de datos
         console.log('Datos guardados exitosamente:', response.data);
@@ -238,7 +238,7 @@ export class Form1Page implements OnInit {
     console.log(data2)
     
     // Realiza la solicitud POST utilizando Axios
-    axios.post('https://20.172.167.237:3000/victimas', data2)
+    axios.post('https://nodemysql12.duckdns.org:3001/victimas', data2)
       .then((response) => {
         // Maneja la respuesta exitosa de la inserción en la base de datos
         console.log('Datos guardados exitosamente:', response.data);

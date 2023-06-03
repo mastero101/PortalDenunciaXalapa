@@ -28,7 +28,7 @@ export class Tab3Page{
   }
 
   obtenerDatos(){
-    axios.get(`http://20.172.167.237:3000/estado/${this.folioInput}`)
+    axios.get(`https://nodemysql12.duckdns.org:3001/estado/${this.folioInput}`)
     .then(response => {
       this.folio = response.data.folio;
       this.estado = response.data.estado;
