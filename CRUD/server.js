@@ -38,8 +38,8 @@ app.use(bodyParser.json());
 
 // Crear un servidor HTTPS con los certificados
 const options = {
-  cert: fs.readFileSync('/CRUD-NodeJS-MYSQL/fullchain.pem'),
-  key: fs.readFileSync('/CRUD-NodeJS-MYSQL/privkey.pem')
+  cert: fs.readFileSync('/home/ubuntu/CRUD-NodeJS-MYSQL/fullchain.pem'),
+  key: fs.readFileSync('/home/ubuntu/CRUD-NodeJS-MYSQL/privkey.pem')
 };
 
 const server = https.createServer(options, app);
