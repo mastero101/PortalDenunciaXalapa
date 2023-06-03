@@ -7,7 +7,6 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { NgHcaptchaModule } from 'ng-hcaptcha';
-import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   imports: [
@@ -16,7 +15,6 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     FormsModule,
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
-    IonicStorageModule.forRoot(),
     NgHcaptchaModule.forRoot({
       siteKey: '6a33385b-0a79-4d19-8b85-f77fac596c05',
       languageCode: 'es' // optional, will default to browser language
